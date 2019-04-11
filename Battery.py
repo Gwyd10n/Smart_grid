@@ -3,3 +3,7 @@
 
 class Battery(object):
     def __init__(self, ):
+        # TODO
+
+    def __str__(self):
+        # TODO
