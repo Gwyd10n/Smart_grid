@@ -1,6 +1,7 @@
 # District class for smart grid
 # Gwydion Oostvogel, ..., ...
 
+
 class District(object):
 
     def __init__(self, id, x_max, y_max):
@@ -61,7 +62,7 @@ class District(object):
         :param id: int
         :return: none
         """
-        if not key in _batteries:
+        if id not in self._batteries:
             self._batteries[id] = battery
         else:
             print("Error: Key already in _batteries")
@@ -73,10 +74,11 @@ class District(object):
         :param id: int
         :return: none
         """
-        if not key in self._houses:
+        if id not in self._houses:
             self._houses[id] = house
         else:
             print("Error: Key already in _houses")
+
 
 # test
 if __name__ == "__main__":
