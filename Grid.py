@@ -11,6 +11,10 @@ class District(object):
         self._batteries = {}
 
     def __str__(self):
+        """
+        Overrides default __str__ method
+        :return: str
+        """
         return f" District: {self.id}\n x max: {self.x_max}\n y max: {self.y_max}"
 
     # Accessor methods (getters)
@@ -30,14 +34,14 @@ class District(object):
 
     def get_house(self):
         """
-        Returns dictionary of house objects in the district.
+        Returns house object with given id.
         :return: dict
         """
         # TODO
 
     def get_batteries(self):
         """
-        Returns dictionary of battery objects in the district.
+        Returns battery object with given id.
         :return: dict
         """
         # TODO

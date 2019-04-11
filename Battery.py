@@ -7,3 +7,16 @@ class Battery(object):
 
     def __str__(self):
         # TODO
+
+    # Accessor methods (getters)
+    def get_coord(self):
+        # TODO
+
+    def get_capacity(self):
+        # TODO
+
+    def get_price(self):
+        # TODO
+
+    # Mutator methods (setters)
+    #TODO
