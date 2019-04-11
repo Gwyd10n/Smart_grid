@@ -15,7 +15,14 @@ class District(object):
         Overrides default __str__ method
         :return: str
         """
-        return f" District: {self._id}\n x max: {self._x_max}\n y max: {self._y_max}"
+        battery_id = ""
+        for key in self._batteries:
+            if not battery_id:
+                battery_id += key
+            else:
+                battery_id += ", " + key
+
+        return f"District: {self._id}\n x max: {self._x_max}\n y max: {self._y_max}\n batteries: {battery_id}"
 
     # Accessor methods (getters)
     def get_id(self):
@@ -47,7 +54,29 @@ class District(object):
         return self._batteries[id]
 
     # Mutator methods (setters)
-    # TODO
+    def add_battery(self, battery, id):
+        """
+        Adds a battery to the batteries dict.
+        :param battery: object
+        :param id: int
+        :return: none
+        """
+        if not key in _batteries:
+            self._batteries[id] = battery
+        else:
+            print("Error: Key already in _batteries")
+
+    def add_house(self, house, id):
+        """
+        Adds a house to the houses dict.
+        :param house: object
+        :param id: int
+        :return: none
+        """
+        if not key in self._houses:
+            self._houses[id] = house
+        else:
+            print("Error: Key already in _houses")
 
 # test
 if __name__ == "__main__":
