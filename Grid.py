@@ -35,14 +35,14 @@ class District(object):
     def get_house(self, id):
         """
         Returns house object with given id.
-        :return: dict
+        :return: object
         """
         return self._houses[id]
 
     def get_batteries(self, id):
         """
         Returns battery object with given id.
-        :return: dict
+        :return: object
         """
         return self._batteries[id]
 
