@@ -1,6 +1,5 @@
-"""
-District class for smart grid
-"""
+# District class for smart grid
+# Gwydion Oostvogel, ..., ...
 
 class District(object):
 
