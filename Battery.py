@@ -1,8 +1,18 @@
 # Battery class for smart grid
 # Gwydion Oostvogel, ..., ...
 
+
 class Battery(object):
     def __init__(self, id, x, y, cap, type='Standard', price=5000):
+        """
+        Initialize object with parameters.
+        :param id: int
+        :param x: int
+        :param y: int
+        :param cap: float
+        :param type: string
+        :param price: int
+        """
         self._id = id
         self._x = x
         self._y = y
@@ -11,6 +21,10 @@ class Battery(object):
         self._price = price
 
     def __str__(self):
+        """
+        Override default __str__ method.
+        :return: string
+        """
         return (f"Battery: {self._id}\nCoordinates x,y: {self._x},{self._y}\nType: {self._type}\n"
                 f"Capacity: {self._cap}\nPrice: {self._price}")
 
@@ -25,9 +39,9 @@ class Battery(object):
     def get_coord(self):
         """
         Returns coordinates
-        :return: tuple of ints
+        :return: int, int
         """
-        return (self._x, self._y)
+        return self._x, self._y
 
     def get_capacity(self):
         """

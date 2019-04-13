@@ -2,9 +2,15 @@
 # Gwydion Oostvogel, ..., ...
 
 
-class District(object):
+class Grid(object):
 
     def __init__(self, id, x_max, y_max):
+        """
+        Initialize object with parameters.
+        :param id: int
+        :param x_max: int
+        :param y_max: int
+        """
         self._id = id
         self._x_max = x_max
         self._y_max = y_max
@@ -13,7 +19,7 @@ class District(object):
 
     def __str__(self):
         """
-        Overrides default __str__ method
+        Override default __str__ method
         :return: str
         """
         battery_id = ""
@@ -36,7 +42,7 @@ class District(object):
     def get_max(self):
         """
         Returns max x, y values for district
-        :return: tuple of ints
+        :return: int, int
         """
         return self._x_max, self._y_max
 
@@ -83,5 +89,5 @@ class District(object):
 
 # test
 if __name__ == "__main__":
-    Krooswijk = District(1, 50, 50)
+    Krooswijk = Grid(1, 50, 50)
     print(Krooswijk)
