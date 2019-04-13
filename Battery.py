@@ -11,9 +11,17 @@ class Battery(object):
         self._price = price
 
     def __str__(self):
-        return f"Battery: {self._id}\nCoordinates x,y: {self._x},{self._y}\nType: {self._type}\nCapacity: {self._cap}\nPrice: {self._price}"
+        return (f"Battery: {self._id}\nCoordinates x,y: {self._x},{self._y}\nType: {self._type}\n"
+                f"Capacity: {self._cap}\nPrice: {self._price}")
 
     # Accessor methods (getters)
+    def get_id(self):
+        """
+        Returns id
+        :return: int
+        """
+        return self._id
+
     def get_coord(self):
         """
         Returns coordinates
@@ -49,5 +57,9 @@ class Battery(object):
 
 if __name__ == "__main__":
     Duracel = Battery(1, 25, 25, 100.0, 'AA', 2500)
-    Duracel.set_coord(30, 30)
     print(Duracel)
+    Duracel.set_coord(30, 30)
+    print(Duracel.get_id())
+    print(Duracel.get_coord())
+    print(Duracel.get_capacity())
+    print(Duracel.get_price())
