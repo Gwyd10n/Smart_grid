@@ -22,14 +22,21 @@ class Grid(object):
         Override default __str__ method
         :return: str
         """
-        battery_id = ""
+        batteries = ""
         for key in self._batteries:
-            if not battery_id:
-                battery_id += key
+            if not batteries:
+                batteries += "\n" + self.get_battery(key).__str__()
             else:
-                battery_id += ", " + key
+                batteries += ",\n\n" + self.get_battery(key).__str__()
 
-        return f"District: {self._id}\n x max: {self._x_max}\n y max: {self._y_max}\n batteries: {battery_id}"
+        houses = ""
+        for key in self._houses:
+            if not houses:
+                houses += "\n" + self.get_house(key).__str__()
+            else:
+                houses += ",\n\n" + self.get_house(key).__str__()
+
+        return f"District: {self._id}\nx max: {self._x_max}\ny max: {self._y_max}\nbatteries: {batteries}\nhouses: {houses}"
 
     # Accessor methods (getters)
     def get_id(self):
@@ -53,7 +60,7 @@ class Grid(object):
         """
         return self._houses[id]
 
-    def get_batteries(self, id):
+    def get_battery(self, id):
         """
         Returns battery object with given id.
         :return: object
