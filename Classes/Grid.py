@@ -36,7 +36,7 @@ class Grid(object):
             else:
                 houses += ",\n\n" + self.get_house(key).__str__()
 
-        return f"District: {self._id}\nx max: {self._x_max}\ny max: {self._y_max}\nbatteries: {batteries}\nhouses: {houses}"
+        return f"District: {self._id}\nx max: {self._x_max}\ny max: {self._y_max}\nbatteries: {batteries}\n\nhouses: {houses}"
 
     # Accessor methods (getters)
     def get_id(self):
