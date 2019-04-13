@@ -1,2 +1,1 @@
 # Test classes
- import Battery
