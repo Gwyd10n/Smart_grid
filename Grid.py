@@ -62,6 +62,7 @@ class District(object):
         :param id: int
         :return: none
         """
+
         if id not in self._batteries:
             self._batteries[id] = battery
         else:

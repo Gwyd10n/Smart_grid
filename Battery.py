@@ -2,21 +2,52 @@
 # Gwydion Oostvogel, ..., ...
 
 class Battery(object):
-    def __init__(self, ):
-        # TODO
+    def __init__(self, id, x, y, cap, type='Standard', price=5000):
+        self._id = id
+        self._x = x
+        self._y = y
+        self._cap = cap
+        self._type = type
+        self._price = price
 
     def __str__(self):
-        # TODO
+        return f"Battery: {self._id}\nCoordinates x,y: {self._x},{self._y}\nType: {self._type}\nCapacity: {self._cap}\nPrice: {self._price}"
 
     # Accessor methods (getters)
     def get_coord(self):
-        # TODO
+        """
+        Returns coordinates
+        :return: tuple of ints
+        """
+        return (self._x, self._y)
 
     def get_capacity(self):
-        # TODO
+        """
+        Returns capacity
+        :return: float
+        """
+        return self._cap
 
     def get_price(self):
-        # TODO
+        """
+        Returns price
+        :return: int
+        """
+        return self._price
 
     # Mutator methods (setters)
-    #TODO
+    def set_coord(self, x, y):
+        """
+        Change location of battery
+        :param x: int
+        :param y: int
+        :return: none
+        """
+        self._x = x
+        self._y = y
+
+
+if __name__ == "__main__":
+    Duracel = Battery(1, 25, 25, 100.0, 'AA', 2500)
+    Duracel.set_coord(30, 30)
+    print(Duracel)
