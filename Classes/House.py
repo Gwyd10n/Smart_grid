@@ -48,10 +48,3 @@ class House(object):
     # Mutator methods (setters)
     ########### Nodig? #############
 
-
-if __name__ == "__main__":
-    House1 = House(1, 10, 25, 50)
-    print(House1)
-    print(House1.get_id())
-    print(House1.get_coord())
-    print(House1.get_max())

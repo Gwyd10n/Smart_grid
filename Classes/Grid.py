@@ -16,6 +16,7 @@ class Grid(object):
         self._y_max = y_max
         self._houses = {}
         self._batteries = {}
+        self._cables = {}
 
     def __str__(self):
         """
@@ -36,7 +37,15 @@ class Grid(object):
             else:
                 houses += ",\n\n" + self.get_house(key).__str__()
 
-        return f"District: {self._id}\nx max: {self._x_max}\ny max: {self._y_max}\nbatteries: {batteries}\n\nhouses: {houses}"
+        cables = ""
+        for key in self._cables:
+            if not cables:
+                cables += "\n" + self.get_cable(key).__str__()
+            else:
+                cables += ",\n\n" + self.get_cable(key).__str__()
+
+        return (f"District: {self._id}\nx max: {self._x_max}\ny max: {self._y_max}\nbatteries: {batteries}\n\n"
+                f"houses: {houses} \n\ncables: {cables}")
 
     # Accessor methods (getters)
     def get_id(self):
@@ -93,8 +102,19 @@ class Grid(object):
         else:
             print("Error: Key already in _houses")
 
+    def add_cable(self, cable, id):
+        """
+        Adds cable to the cables dict.
+        :param cable: object
+        :param id: int
+        :return: none
+        """
+        self._cables[id] = cable
 
-# test
-if __name__ == "__main__":
-    Krooswijk = Grid(1, 50, 50)
-    print(Krooswijk)
+    def get_cable(self, id):
+        """
+        Returns cable object with given id.
+        :return: object
+        """
+        return self._cables[id]
+

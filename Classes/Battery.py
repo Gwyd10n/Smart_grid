@@ -67,13 +67,3 @@ class Battery(object):
         """
         self._x = x
         self._y = y
-
-
-if __name__ == "__main__":
-    Duracel = Battery(1, 25, 25, 100.0, 'AA', 2500)
-    print(Duracel)
-    Duracel.set_coord(30, 30)
-    print(Duracel.get_id())
-    print(Duracel.get_coord())
-    print(Duracel.get_capacity())
-    print(Duracel.get_price())
