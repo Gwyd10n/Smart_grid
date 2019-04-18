@@ -1,5 +1,5 @@
 # District class for smart grid
-# Gwydion Oostvogel, ..., ...
+# Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
 
 
 class Grid(object):
@@ -117,4 +117,3 @@ class Grid(object):
         :return: object
         """
         return self._cables[id]
-
