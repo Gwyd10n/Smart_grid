@@ -1,5 +1,9 @@
 # District class for smart grid
+<<<<<<< HEAD
 # Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
+=======
+# Gwydion Oostvogel, Jelle ..., Sophie ...
+>>>>>>> dd1896f86fdc481ec19420f27ef9ed01c3e722c2
 
 
 class Grid(object):
