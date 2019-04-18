@@ -1,5 +1,5 @@
 # Battery class for smart grid
-# Gwydion Oostvogel, ..., ...
+# Gwydion Oostvogel, Jelle ..., Sophie ...
 
 
 class Battery(object):
