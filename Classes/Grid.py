@@ -69,19 +69,12 @@ class Grid(object):
         """
         return self._houses[id]
 
-
-    def add_house(self, house, id):
+    def get_houses(self):
         """
-        Adds a house to the houses dict.
-        :param house: object
-        :param id: int
-        :return: none
+        Returns all houses.
+        :return: dictionary
         """
-        if id not in self._houses:
-            self._houses[id] = house
-        else:
-            print("Error: Key already in _houses")
-
+        return self._houses
 
     def get_battery(self, id):
         """
@@ -90,20 +83,50 @@ class Grid(object):
         """
         return self._batteries[id]
 
+    def get_batteries(self):
+        """
+        Returns all batteries.
+        :return: dictionary
+        """
+        return self._batteries
+
+    def get_cable(self, id):
+        """
+        Returns cable object with given id.
+        :return: object
+        """
+        return self._cables[id]
+
+    def get_cables(self):
+        """
+        Returns all cables.
+        :return: dictionary
+        """
+        return self._cables
+
     # Mutator methods (setters)
-    def add_battery(self, battery, id):
+    def add_house(self, house):
+        """
+        Adds a house to the houses dict.
+        :param house: object
+        :return: none
+        """
+        if id not in self._houses:
+            self._houses[house.get_id()] = house
+        else:
+            print("Error: Key already in _houses")
+
+    def add_battery(self, battery):
         """
         Adds a battery to the batteries dict.
         :param battery: object
-        :param id: int
         :return: none
         """
 
         if id not in self._batteries:
-            self._batteries[id] = battery
+            self._batteries[battery.get_id()] = battery
         else:
             print("Error: Key already in _batteries")
-
 
     def add_cable(self, cable, id):
         """
@@ -113,10 +136,3 @@ class Grid(object):
         :return: none
         """
         self._cables[id] = cable
-
-    def get_cable(self, id):
-        """
-        Returns cable object with given id.
-        :return: object
-        """
-        return self._cables[id]

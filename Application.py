@@ -59,7 +59,7 @@ def load_batteries(id, version):
             if "pos" in line:
                 continue
             # Add battery to grid
-            GRIDS[id].add_battery(Battery(batt_id, int(line[0]), int(line[1]), float(line[2])), batt_id)
+            GRIDS[id].add_battery(Battery(batt_id, int(line[0]), int(line[1]), float(line[2])))
             batt_id += 1
     # Close file
     b_file.close()
@@ -83,7 +83,7 @@ def load_houses(id, version):
             if 'x' in house:
                 continue
             # Add house to grid.
-            GRIDS[id].add_house(House(house_id, int(house[0]), int(house[1]), float(house[2])), house_id)
+            GRIDS[id].add_house(House(house_id, int(house[0]), int(house[1]), float(house[2])))
             house_id += 1
     # Close file
     h_file.close()
