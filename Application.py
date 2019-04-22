@@ -17,7 +17,7 @@ GRIDS = {}
 def main():
     # Check for correct number of arguments.
     if len(sys.argv) != 2:
-        print("Usage: Python Application.py <version>")
+        print("Usage: Python Application.py <1, 2 or 3>")
         sys.exit(1)
 
     # Create grid
