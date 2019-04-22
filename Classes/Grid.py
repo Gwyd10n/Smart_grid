@@ -1,9 +1,5 @@
 # District class for smart grid
-<<<<<<< HEAD
 # Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
-=======
-# Gwydion Oostvogel, Jelle ..., Sophie ...
->>>>>>> dd1896f86fdc481ec19420f27ef9ed01c3e722c2
 
 
 class Grid(object):
@@ -32,24 +28,24 @@ class Grid(object):
             if not batteries:
                 batteries += "\n" + self.get_battery(key).__str__()
             else:
-                batteries += ",\n\n" + self.get_battery(key).__str__()
+                batteries += "\n\n" + self.get_battery(key).__str__()
 
         houses = ""
         for key in self._houses:
             if not houses:
                 houses += "\n" + self.get_house(key).__str__()
             else:
-                houses += ",\n\n" + self.get_house(key).__str__()
+                houses += "\n\n" + self.get_house(key).__str__()
 
         cables = ""
         for key in self._cables:
             if not cables:
                 cables += "\n" + self.get_cable(key).__str__()
             else:
-                cables += ",\n\n" + self.get_cable(key).__str__()
+                cables += "\n\n" + self.get_cable(key).__str__()
 
-        return (f"District: {self._id}\nx max: {self._x_max}\ny max: {self._y_max}\nbatteries: {batteries}\n\n"
-                f"houses: {houses} \n\ncables: {cables}")
+        return (f"District: {self._id}\nx max: {self._x_max}\ny max: {self._y_max}\n\nbatteries:{batteries}\n\n"
+                f"houses:{houses} \n\ncables:{cables}")
 
     # Accessor methods (getters)
     def get_id(self):
@@ -73,6 +69,20 @@ class Grid(object):
         """
         return self._houses[id]
 
+
+    def add_house(self, house, id):
+        """
+        Adds a house to the houses dict.
+        :param house: object
+        :param id: int
+        :return: none
+        """
+        if id not in self._houses:
+            self._houses[id] = house
+        else:
+            print("Error: Key already in _houses")
+
+
     def get_battery(self, id):
         """
         Returns battery object with given id.
@@ -94,17 +104,6 @@ class Grid(object):
         else:
             print("Error: Key already in _batteries")
 
-    def add_house(self, house, id):
-        """
-        Adds a house to the houses dict.
-        :param house: object
-        :param id: int
-        :return: none
-        """
-        if id not in self._houses:
-            self._houses[id] = house
-        else:
-            print("Error: Key already in _houses")
 
     def add_cable(self, cable, id):
         """

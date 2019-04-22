@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Needed libraries
 import csv
 import pandas as pd
@@ -14,8 +15,8 @@ class Smartgrid():
 
     def __init__(self, districts):
 
-        self.houses = self.load_houses(f"wijk{districts}_huizen.csv")
-        self.batteries = self.load_batteries(f"wijk{districts}_batterijen.txt")
+        self.houses = self.load_houses(f"Huizen&Batterijen/wijk{districts}_huizen.csv")
+        self.batteries = self.load_batteries(f"Huizen&Batterijen/wijk{districts}_batterijen.txt")
 
     def load_houses(self, filename):
         """

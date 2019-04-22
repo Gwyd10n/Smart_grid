@@ -1,5 +1,5 @@
-# Battery class for smart grid
-# Gwydion Oostvogel, Jelle ..., Sophie ...
+# District class for smart grid
+# Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
 
 
 class Battery(object):
