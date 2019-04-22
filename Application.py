@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# District class for smart grid
 # Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
 
 import csv
