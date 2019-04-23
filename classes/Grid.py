@@ -2,6 +2,10 @@
 # Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
 
 
+from classes.Battery import Battery
+from classes.House import House
+
+
 class Grid(object):
 
     def __init__(self, id, x_max, y_max):
@@ -111,7 +115,7 @@ class Grid(object):
         :param house: object
         :return: none
         """
-        if id not in self._houses:
+        if house.get_id() not in self._houses:
             self._houses[house.get_id()] = house
         else:
             print("Error: Key already in _houses")
@@ -123,7 +127,7 @@ class Grid(object):
         :return: none
         """
 
-        if id not in self._batteries:
+        if battery.get_id() not in self._batteries:
             self._batteries[battery.get_id()] = battery
         else:
             print("Error: Key already in _batteries")

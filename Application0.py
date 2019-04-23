@@ -5,10 +5,10 @@ import pandas as pd
 import sys
 
 # Test classes
-from Classes.Grid import Grid
-from Classes.Battery import Battery
-from Classes.House import House
-from Classes.Cable import Cable
+from classes.Grid import Grid
+from classes.Battery import Battery
+from classes.House import House
+from classes.Cable import Cable
 
 
 class Smartgrid():
