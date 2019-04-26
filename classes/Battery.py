@@ -6,7 +6,7 @@ class Battery(object):
     def __init__(self, id, x, y, cap, type='Standard', price=5000):
         """
         Initialize object with parameters.
-        :param id: int
+        :param id: string
         :param x: int
         :param y: int
         :param cap: float

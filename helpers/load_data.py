@@ -37,7 +37,7 @@ def load_batteries(id, version):
     path = os.path.dirname(__file__).replace("helpers", f"data\\wijk{version}_batterijen.txt")
     # Open file
     with open(path, 'r') as b_file:
-        batt_id = 0
+        batt_nr = 0
         # Iterate over lines in file
         for line in b_file:
             # Clean input
@@ -46,9 +46,10 @@ def load_batteries(id, version):
             if "pos" in line:
                 continue
             # Add battery to grid
+            batt_id = f"B{batt_nr}"
             battery = Battery(batt_id, int(line[0]), int(line[1]), float(line[2]))
             GRID[id].add_battery(battery)
-            batt_id += 1
+            batt_nr += 1
     # Close file
     b_file.close()
 
@@ -63,7 +64,7 @@ def load_houses(id, version):
     path = os.path.dirname(__file__).replace("helpers", f"data\\wijk{version}_huizen.csv")
     # Open file
     with open(path, 'r') as h_file:
-        house_id = 0
+        house_nr = 0
         # Read file
         houses = csv.reader(h_file)
         # Iterate over lines in file
@@ -72,7 +73,8 @@ def load_houses(id, version):
             if 'x' in house:
                 continue
             # Add house to grid.
+            house_id = f"H{house_nr}"
             GRID[id].add_house(House(house_id, int(house[0]), int(house[1]), float(house[2])))
-            house_id += 1
+            house_nr += 1
     # Close file
     h_file.close()

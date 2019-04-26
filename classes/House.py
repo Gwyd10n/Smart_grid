@@ -6,7 +6,7 @@ class House(object):
     def __init__(self, id, x, y, max_out):
         """
         Initialize object with parameters.
-        :param id: int
+        :param id: string
         :param x: int
         :param y: int
         :param max_out: float

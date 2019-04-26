@@ -6,7 +6,7 @@ class Cable(object):
     def __init__(self, id, price=9, batt_id=0):
         """
         Initialize object with parameters.
-        :param id: int
+        :param id: string
         :param price: int
         :param batt_id: int
         """
