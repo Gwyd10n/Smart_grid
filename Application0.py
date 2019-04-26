@@ -5,7 +5,7 @@ import pandas as pd
 import sys
 
 # Test classes
-from classes.Grid import Grid
+from classes.Grid0 import Grid
 from classes.Battery import Battery
 from classes.House import House
 from classes.Cable import Cable

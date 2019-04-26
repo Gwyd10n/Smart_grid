@@ -14,7 +14,7 @@ def main():
     version = sys.argv[1]
 
     # Create grid
-    grid = create_grid(0, 500, 500, version)
+    grid = create_grid(0, 50, 50, version)
     # Check
     print(grid)
 

@@ -1,9 +1,6 @@
+#!/usr/bin/python
 # District class for smart grid
 # Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
-
-
-from classes.Battery import Battery
-from classes.House import House
 
 
 class Grid(object):
@@ -18,9 +15,15 @@ class Grid(object):
         self._id = id
         self._x_max = x_max
         self._y_max = y_max
-        self._houses = {}
-        self._batteries = {}
         self._cables = {}
+        self._batteries = {}
+        self._houses = {}
+        self._grid = []
+        for i in range(y_max + 1):
+            row = []
+            for j in range(x_max + 1):
+                row.append('')
+            self._grid.append(row)
 
     def __str__(self):
         """
@@ -48,8 +51,13 @@ class Grid(object):
             else:
                 cables += "\n\n" + self.get_cable(key).__str__()
 
+        grid = "Grid layout:\n["
+        for row in self._grid:
+            grid += f"\n{row}"
+        grid += "\n]"
+
         return (f"District: {self._id}\nx max: {self._x_max}\ny max: {self._y_max}\n\nbatteries:{batteries}\n\n"
-                f"houses:{houses} \n\ncables:{cables}")
+                f"houses:{houses} \n\ncables:{cables}\n{grid}")
 
     # Accessor methods (getters)
     def get_id(self):
@@ -94,12 +102,12 @@ class Grid(object):
         """
         return self._batteries
 
-    def get_cable(self, id):
+    def get_cable(self, cable_id):
         """
         Returns cable object with given id.
         :return: object
         """
-        return self._cables[id]
+        return self._cables[cable_id]
 
     def get_cables(self):
         """
@@ -119,6 +127,9 @@ class Grid(object):
             self._houses[house.get_id()] = house
         else:
             print("Error: Key already in _houses")
+        coord = house.get_coord()
+        if self._grid[coord[1]][coord[0]] == '' or ('C' in self._grid[coord[1]][coord[0]]):
+            self._grid[coord[1]][coord[0]] = house.get_id()
 
     def add_battery(self, battery):
         """
@@ -126,17 +137,44 @@ class Grid(object):
         :param battery: object
         :return: none
         """
-
         if battery.get_id() not in self._batteries:
             self._batteries[battery.get_id()] = battery
         else:
-            print("Error: Key already in _batteries")
+            print("Error: Key already in self._batteries")
+        coord = battery.get_coord()
+        if self._grid[coord[1]][coord[0]] == '' or self._grid[coord[1]][coord[0]] == 'C':
+            self._grid[coord[1]][coord[0]] = battery.get_id()
 
-    def add_cable(self, cable, id):
+    def add_cable(self, cable):
         """
         Adds cable to the cables dict.
         :param cable: object
-        :param id: int
         :return: none
         """
-        self._cables[id] = cable
+        cable_id = cable.get_id()
+        self._cables[cable_id] = cable
+        route = cable.get_route()
+        for i in range(len(route)-1):
+            x1 = route[i][0]
+            y1 = route[i][1]
+            x2 = route[i + 1][0]
+            y2 = route[i + 1][1]
+
+            if x1 - x2 == 0:
+                if y1 > y2:
+                    small = y2
+                else:
+                    small = y1
+                for y in range(small, small + abs(y1 - y2)+1):
+                    self._grid[y][x1] = self._grid[y][x1] + cable_id
+
+            elif y1 - y2 == 0:
+                if x1 > x2:
+                    small = x2
+                else:
+                    small = x1
+                for x in range(small, small + abs(x1 - x2)+1):
+                    self._grid[y1][x] = self._grid[y1][x] + cable_id
+
+            else:
+                print("Error: invalid route")
