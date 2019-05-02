@@ -19,6 +19,7 @@ class Battery(object):
         self._cap = cap
         self._type = type
         self._price = price
+        self.houses = []
 
     def __str__(self):
         """
@@ -67,3 +68,6 @@ class Battery(object):
         """
         self._x = x
         self._y = y
+
+    def add_house(self, key):
+        self.houses.append(key)
