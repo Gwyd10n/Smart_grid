@@ -5,6 +5,7 @@
 import os
 import csv
 import re
+from pathlib import Path
 from classes.Grid import Grid
 from classes.Battery import Battery
 from classes.House import House
@@ -34,7 +35,7 @@ def load_batteries(id, version):
     :param version: int
     :return: none
     """
-    path = os.path.dirname(__file__).replace("helpers", f"data\\wijk{version}_batterijen.txt")
+    path = Path(f"data/wijk{version}_batterijen.txt")
     # Open file
     with open(path, 'r') as b_file:
         batt_nr = 0
@@ -61,7 +62,7 @@ def load_houses(id, version):
     :param version: int
     :return: none
     """
-    path = os.path.dirname(__file__).replace("helpers", f"data\\wijk{version}_huizen.csv")
+    path = Path(f"data/wijk{version}_huizen.csv")
     # Open file
     with open(path, 'r') as h_file:
         house_nr = 0
