@@ -2,7 +2,6 @@
 # Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
 # helper functions for loading data.
 
-import os
 import csv
 import re
 from pathlib import Path
