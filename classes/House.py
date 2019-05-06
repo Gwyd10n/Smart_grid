@@ -45,6 +45,6 @@ class House(object):
         """
         return self._max_out
 
+
     # Mutator methods (setters)
     ########### Nodig? #############
-
