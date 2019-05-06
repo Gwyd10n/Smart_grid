@@ -12,6 +12,9 @@ def create_test_grid():
         grid.append(row)
     return grid
 
+def greedy_algorithm():
+
+
 if __name__ == "__main__":
     grid = create_test_grid()
 
