@@ -5,3 +5,10 @@
 # a) it is a goal state then quit
 # b) it is better than the current state make it the new current state.
 # if it is not better, go back to step 2
+
+
+
+def hillclimber(batteries, houses ):
+    """
+    Hillclimber algorithm.
+    """
