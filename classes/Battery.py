@@ -61,6 +61,10 @@ class Battery(object):
         return self._price
 
     def get_av(self):
+        """
+        Returns available capacity
+        :return: float
+        """
         return self._avcap
 
     # Mutator methods (setters)
@@ -76,3 +80,6 @@ class Battery(object):
 
     def add_house(self, key):
         self.houses.append(key)
+
+    def set_av(self, max_out):
+        self._avcap -= max_out
