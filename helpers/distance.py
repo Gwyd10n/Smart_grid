@@ -1,4 +1,4 @@
-def manhatten_distance (x, y, n):
+def manhatten_distance (x, y):
 
     coordinates_h = house.get_coord()
     coordinates_b = battery.get_coord()
