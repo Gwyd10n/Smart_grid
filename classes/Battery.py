@@ -17,9 +17,11 @@ class Battery(object):
         self._x = x
         self._y = y
         self._cap = cap
+        self._avcap = cap
         self._type = type
         self._price = price
         self.houses = []
+
 
     def __str__(self):
         """
@@ -57,6 +59,9 @@ class Battery(object):
         :return: int
         """
         return self._price
+
+    def get_av(self):
+        return self._avcap
 
     # Mutator methods (setters)
     def set_coord(self, x, y):
