@@ -5,7 +5,7 @@
 import csv
 import re
 from pathlib import Path
-from classes.Grid import Grid
+from ..classes.Grid import Grid
 from classes.Battery import Battery
 from classes.House import House
 from classes.Cable import Cable

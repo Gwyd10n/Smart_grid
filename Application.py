@@ -45,6 +45,8 @@ def connect(house, battery):
     else:
         battery.get_av() = battery.get_av() - house.get_max()
 
+def disconnect(house, battery):
+    return "TODO"
 
 
 if __name__ == "__main__":

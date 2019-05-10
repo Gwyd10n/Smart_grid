@@ -1,7 +1,7 @@
-from Grid import Grid
-from Battery import Battery
-from House import House
-from Cable import Cable
+from classes.Grid import Grid
+from classes.Battery import Battery
+from classes.House import House
+from classes.Cable import Cable
 
 def manhatten_distance (house, battery):
 
