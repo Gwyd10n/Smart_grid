@@ -1,5 +1,5 @@
 # District class for smart grid
-# Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
+# Gwydion Oostvogel, Sophie Schubert
 
 
 class Cable(object):
@@ -11,7 +11,6 @@ class Cable(object):
         """
         self._id = cable_id
         self._price = price
-        self._house_id = ''
         self._battery_id = ''
         self._route = []
 
@@ -90,14 +89,16 @@ class Cable(object):
         self._house_id = house_id
 
 
-    def add_route(self, x, y):
+    def add_route(self, start, end):
         """
         Adds route segment to routes
         :param x: int
         :param y: int
         :return: none
         """
-        self._route.append([x, y])
+        self._route.append([start[0], start[1]])
+        self._route.append([end[0], start[1]])
+        self._route.append([end[0], end[1]])
 
     def change_route(self, old_x, old_y, new_x, new_y):
         """

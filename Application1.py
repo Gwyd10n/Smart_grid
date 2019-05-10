@@ -2,8 +2,8 @@
 # Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
 
 #####################
-import Battery
-import House
+import classes.Battery
+import classes.House
 
 ######################
 import sys

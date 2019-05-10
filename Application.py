@@ -4,6 +4,7 @@
 
 import sys
 from helpers.load_data import create_grid
+from helpers.greedy import greedy
 
 
 def main():
@@ -16,7 +17,13 @@ def main():
     # Create grid
     grid = create_grid(0, 50, 50, version)
     # Check
-    print(grid)
+    # print(grid)
+    greedy_grid = greedy(grid)
+    cables = greedy_grid.get_cables()
+    for key in cables:
+        # print(cables[key])
+        pass
+
 
 
 if __name__ == "__main__":

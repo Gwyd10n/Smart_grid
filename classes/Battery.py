@@ -1,5 +1,5 @@
 # District class for smart grid
-# Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
+# Gwydion Oostvogel, Sophie Schubert
 
 
 class Battery(object):
@@ -43,7 +43,7 @@ class Battery(object):
         """
         return self._x, self._y
 
-    def get_capacity(self):
+    def get_cap(self):
         """
         Returns capacity
         :return: float
@@ -67,3 +67,11 @@ class Battery(object):
         """
         self._x = x
         self._y = y
+
+    def red_cap(self, batt_in):
+        """
+        Reduce capacity of battery
+        :param batt_in: float
+        :return: none
+        """
+        self._cap -= batt_in

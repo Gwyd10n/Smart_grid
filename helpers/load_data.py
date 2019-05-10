@@ -8,7 +8,7 @@ import re
 from classes.Grid import Grid
 from classes.Battery import Battery
 from classes.House import House
-from classes.Cable import Cable
+
 
 
 GRID = {}
