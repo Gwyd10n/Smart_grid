@@ -13,7 +13,7 @@ def create_test_grid():
     return grid
 
 def greedy_algorithm():
-
+    pass
 
 if __name__ == "__main__":
     grid = create_test_grid()
