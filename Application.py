@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
+# Gwydion Oostvogel, Sophie Schubert
 
 
 import sys
@@ -16,13 +16,12 @@ def main():
 
     # Create grid
     grid = create_grid(0, 50, 50, version)
-    # Check
-    # print(grid)
     greedy_grid = greedy(grid)
+
+    # test if there are any cables
     cables = greedy_grid.get_cables()
     for key in cables:
-        # print(cables[key])
-        pass
+        print(cables[key])
 
 
 

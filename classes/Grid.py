@@ -178,3 +178,10 @@ class Grid(object):
 
             else:
                 print("Error: invalid route")
+
+    def clear_cables(self):
+        """
+        Remove all cables.
+        :return: none
+        """
+        self._cables = {}
