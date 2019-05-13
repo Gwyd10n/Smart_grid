@@ -1,5 +1,5 @@
 # District class for smart grid
-# Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
+# Gwydion Oostvogel, Sophie Schubert
 
 
 class Battery(object):
@@ -17,11 +17,8 @@ class Battery(object):
         self._x = x
         self._y = y
         self._cap = cap
-        self._avcap = cap
         self._type = type
         self._price = price
-        self.houses = []
-
 
     def __str__(self):
         """
@@ -46,7 +43,7 @@ class Battery(object):
         """
         return self._x, self._y
 
-    def get_capacity(self):
+    def get_cap(self):
         """
         Returns capacity
         :return: float
@@ -60,13 +57,6 @@ class Battery(object):
         """
         return self._price
 
-    def get_av(self):
-        """
-        Returns available capacity
-        :return: float
-        """
-        return self._avcap
-
     # Mutator methods (setters)
     def set_coord(self, x, y):
         """
@@ -78,8 +68,10 @@ class Battery(object):
         self._x = x
         self._y = y
 
-    def add_house(self, key):
-        self.houses.append(key)
-
-    def set_av(self, max_out):
-        self._avcap -= max_out
+    def red_cap(self, batt_in):
+        """
+        Reduce capacity of battery
+        :param batt_in: float
+        :return: none
+        """
+        self._cap -= batt_in

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # District class for smart grid
-# Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
+# Gwydion Oostvogel, Sophie Schubert
 
 
 class Grid(object):
@@ -178,3 +178,10 @@ class Grid(object):
 
             else:
                 print("Error: invalid route")
+
+    def clear_cables(self):
+        """
+        Remove all cables.
+        :return: none
+        """
+        self._cables = {}

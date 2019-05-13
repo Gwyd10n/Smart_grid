@@ -1,5 +1,5 @@
 # District class for smart grid
-# Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
+# Gwydion Oostvogel, Sophie Schubert
 
 
 class House(object):
@@ -44,7 +44,3 @@ class House(object):
         :return:
         """
         return self._max_out
-
-
-    # Mutator methods (setters)
-    ########### Nodig? #############
