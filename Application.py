@@ -5,6 +5,7 @@
 import sys
 from helpers.load_data import create_grid
 from helpers.greedy import greedy
+from helpers.random import random
 
 
 def main():
@@ -16,13 +17,10 @@ def main():
 
     # Create grid
     grid = create_grid(0, 50, 50, version)
-    greedy_grid = greedy(grid)
+    random_grid = random(grid)
 
     # test if there are any cables
-    cables = greedy_grid.get_cables()
-    for key in cables:
-        print(cables[key])
-
+    print(random_grid)
 
 
 if __name__ == "__main__":

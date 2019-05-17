@@ -3,14 +3,16 @@
 
 from classes.Cable import Cable
 from random import shuffle
+from helpers.code import get_man
 
 
 def greedy(grid):
-    max_iterations = 10000000
+    max_iterations = 1000
     for i in range(max_iterations):
         try:
             grid.clear_cables()
-            return greedy_alg(grid)
+            greedy_grid = greedy_alg(grid)
+            return greedy_grid
         except KeyError:
             print(f"grid not solved, trying again for the {i}th time")
     print("no solution found")
@@ -48,6 +50,6 @@ def greedy_alg(grid):
         return grid
 
 
-def get_man(coord_house, coord_battery):
-    manhattan_dist = abs(coord_house[0] - coord_battery[0]) + abs(coord_house[1] - coord_battery[1])
-    return manhattan_dist
+# def get_man(coord_house, coord_battery):
+#     manhattan_dist = abs(coord_house[0] - coord_battery[0]) + abs(coord_house[1] - coord_battery[1])
+#     return manhattan_dist
