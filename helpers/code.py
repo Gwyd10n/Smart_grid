@@ -3,14 +3,16 @@ from classes.Battery import Battery
 from classes.House import House
 from classes.Cable import Cable
 
-def manhatten_distance (house, battery):
+def manhatten_distance(house, battery):
 
     coordinates_h = house.get_coord()
     coordinates_b = battery.get_coord()
-    length = abs(coordinates_h[0] - coordinates_b[0]) + abs(coordinates_h[1] - coordinates_b[1])
-
-    return length
+    return abs(coordinates_h[0] - coordinates_b[0]) + abs(coordinates_h[1] - coordinates_b[1])
 
 
-if __name__ == "__main__":
-    print(manhatten_distance(House.get_coord(), Battery.get_coord()))
+def save_csv(grid):
+    """
+    Saves grid to CSV file.
+    :param grid: Object
+    :return: int
+    """

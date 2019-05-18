@@ -185,3 +185,9 @@ class Grid(object):
         :return: none
         """
         self._cables = {}
+
+    def total_len(self):
+        """
+        Calculate total length of all cables.
+        :return:
+        """
