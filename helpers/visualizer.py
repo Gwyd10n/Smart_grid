@@ -49,6 +49,6 @@ def plot(path):
 
 
 if __name__ == "__main__":
-    path = os.path.dirname(os.path.realpath(__file__)).replace("helpers", "data\\District_1_greedy.csv")
+    path = os.path.dirname(os.path.realpath(__file__)).replace("helpers", "data\\results\\District_1_greedy.csv")
     print(path)
     plot(path)
