@@ -1,7 +1,16 @@
-#!/usr/bin/env python
-# Gwydion Oostvogel, Sophie Schubert
+from classes.Grid import Grid
+from classes.Battery import Battery
+from classes.House import House
+from classes.Cable import Cable
+
+def manhatten_distance (house, battery):
+
+    coordinates_h = house.get_coord()
+    coordinates_b = battery.get_coord()
+    length = abs(coordinates_h[0] - coordinates_b[0]) + abs(coordinates_h[1] - coordinates_b[1])
+
+    return length
 
 
-def get_man(coord_house, coord_battery):
-    manhattan_dist = abs(coord_house[0] - coord_battery[0]) + abs(coord_house[1] - coord_battery[1])
-    return manhattan_dist
+if __name__ == "__main__":
+    print(manhatten_distance(House.get_coord(), Battery.get_coord()))

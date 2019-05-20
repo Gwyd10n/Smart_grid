@@ -14,17 +14,18 @@ def greedy(grid):
             greedy_grid = greedy_alg(grid)
             return greedy_grid
         except KeyError:
-            print(f"grid not solved, trying again for the {i}th time")
-    print("no solution found")
+            pass
+    #         print(f"grid not solved, trying again for the {i}th time")
+    # # print("no solution found")
 
 
 def greedy_alg(grid):
         batteries = grid.get_batteries()
         bkeys = list(batteries.keys())
-        shuffle(bkeys)
+        # shuffle(bkeys)
         houses = grid.get_houses()
         hkeys = list(houses.keys())
-        shuffle(hkeys)
+        # shuffle(hkeys)
         grid_max = grid.get_max()
 
         for hkey in hkeys:
