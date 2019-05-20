@@ -11,7 +11,8 @@ def greedy(grid):
     for i in range(max_iterations):
         try:
             grid.clear_cables()
-            return greedy_alg(grid)
+            greedy_grid = greedy_alg(grid)
+            return greedy_grid
         except KeyError:
             pass
     exit("Greedy not solved")
@@ -48,6 +49,3 @@ def greedy_alg(grid):
         grid.add_cable(cable)
 
     return grid
-
-
-

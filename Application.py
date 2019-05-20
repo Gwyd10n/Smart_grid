@@ -2,11 +2,10 @@
 # Gwydion Oostvogel, Sophie Schubert
 
 
-import os
 import sys
 from helpers.load_data import create_grid
 from helpers.greedy import greedy
-from helpers.hillclimber import hillclimber
+from helpers.random import random
 from helpers.helpers import save_csv
 
 
@@ -19,22 +18,16 @@ def main():
 
     # Create grid
     grid = create_grid(0, 50, 50, version)
+    random_grid = random(grid)
+
+    # test if there are any cables
+    # print(random_grid)
 
     greedy_grid = greedy(grid)
-
-    # cables = list(greedy_grid.get_cables().keys())
-    # print(type(greedy_grid.get_cables()))
-    # for idx, key in enumerate(cables):
-    #     if not idx % 2:
-    #         greedy_grid.rem_cable(key)
-
     # print(greedy_grid)
-    # save_csv(greedy_grid, sys.argv[1], "greedy")
+    save_csv(greedy_grid, sys.argv[1], "greedy0")
 
 
-    hill_grid = hillclimber(greedy_grid)
-    # print(hill_grid)
-    save_csv(hill_grid, sys.argv[1], "hillclimber")
 
 
 if __name__ == "__main__":

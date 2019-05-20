@@ -5,6 +5,7 @@ from classes.Cable import Cable
 import csv
 import os
 
+
 def get_man(coord_start, coord_end):
     return abs(coord_start[0] - coord_end[0]) + abs(coord_start[1] - coord_end[1])
 
@@ -20,7 +21,7 @@ def save_csv(grid, distr, alg):
     houses = grid.get_houses()
     batteries = grid.get_batteries()
     cables = grid.get_cables()
-    path = os.path.dirname(__file__).replace("helpers", f"data\\District_{distr}_{alg}.csv")
+    path = os.path.dirname(__file__).replace("helpers", f"data\\results\\District_{distr}_{alg}.csv")
     rows = []
 
     rows.append([distr, alg, grid.tot_len()])
