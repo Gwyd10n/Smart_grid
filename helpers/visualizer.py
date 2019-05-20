@@ -3,6 +3,7 @@ import os
 import csv
 import itertools
 
+
 def plot(path):
 
     with open(path, 'r') as csvfile:

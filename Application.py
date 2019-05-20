@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
 
-
 import os
 import sys
 from helpers.load_data import create_grid
 from helpers.greedy import greedy
+from helpers.greedy2 import greedy2
 from helpers.hillclimber import hillclimber
 from helpers.helpers import save_csv
 
@@ -20,7 +20,9 @@ def main():
     # Create grid
     grid = create_grid(0, 50, 50, version)
 
-    greedy_grid = greedy(grid)
+    # greedy_grid = greedy(grid)
+
+    greedy2(grid)
 
     # cables = list(greedy_grid.get_cables().keys())
     # print(type(greedy_grid.get_cables()))
@@ -32,9 +34,9 @@ def main():
     # save_csv(greedy_grid, sys.argv[1], "greedy")
 
 
-    hill_grid = hillclimber(greedy_grid)
-    # print(hill_grid)
-    save_csv(hill_grid, sys.argv[1], "hillclimber")
+    # hill_grid = hillclimber(greedy_grid)
+    # # print(hill_grid)
+    # save_csv(hill_grid, sys.argv[1], "hillclimber")
 
 
 if __name__ == "__main__":

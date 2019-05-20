@@ -2,7 +2,6 @@
 # Gwydion Oostvogel, Sophie Schubert
 
 
-
 class Cable(object):
     def __init__(self, cable_id, price=9):
         """
@@ -70,7 +69,6 @@ class Cable(object):
         """
         self._battery_id = batt_id
 
-
     def add_house(self, house_id):
         """
         Adds house to the cable.
@@ -78,7 +76,6 @@ class Cable(object):
         :return:
         """
         self._house_id = house_id
-
 
     def add_route(self, house, battery):
         """

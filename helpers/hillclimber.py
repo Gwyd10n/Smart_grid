@@ -1,6 +1,7 @@
 from copy import deepcopy
 from random import shuffle
 
+
 def hillclimber(grid):
     cables = grid.get_cables()
     batteries = grid.get_batteries()

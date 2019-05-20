@@ -48,6 +48,3 @@ def greedy_alg(grid):
         grid.add_cable(cable)
 
     return grid
-
-
-

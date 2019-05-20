@@ -5,6 +5,7 @@ from classes.Cable import Cable
 import csv
 import os
 
+
 def get_man(coord_start, coord_end):
     return abs(coord_start[0] - coord_end[0]) + abs(coord_start[1] - coord_end[1])
 
