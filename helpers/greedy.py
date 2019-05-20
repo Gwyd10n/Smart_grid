@@ -38,7 +38,7 @@ def greedy_alg(grid):
             h_out = house.get_max()
             b_cap = battery.get_cap()
 
-            if curr_manh < best: #and h_out <= b_cap:
+            if curr_manh < best and h_out <= b_cap:
                 best = curr_manh
                 to_batt = bkey
 

@@ -9,14 +9,14 @@ def random(grid):
     for i in range(max_iterations):
         try:
             grid.clear_cables()
-            greedy_grid = greedy_alg(grid)
-            return greedy_grid
+            random_grid = random(grid)
+            return random_grid
         except KeyError:
             print(f"grid not solved, trying again for the {i}th time")
     print("no solution found")
 
 
-def greedy_alg(grid):
+def random(grid):
     batteries = grid.get_batteries()
     bkeys = list(batteries.keys())
     shuffle(bkeys)

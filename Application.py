@@ -5,6 +5,7 @@
 import sys
 from helpers.load_data import create_grid
 from helpers.greedy import greedy
+from helpers.greedy2 import greedy2
 from helpers.random import random
 from helpers.hillclimber import hillclimber
 from helpers.helpers import save_csv
@@ -19,13 +20,14 @@ def main():
 
     # Create grid
     grid = create_grid(0, 50, 50, version)
-    random_grid = random(grid)
+    # random_grid = random(grid)
 
     # test if there are any cables
     # print(random_grid)
 
-    greedy_grid = greedy(grid)
-    save_csv(greedy_grid, sys.argv[1], "greedy")
+    greedy_grid = greedy2(grid)
+    print(greedy_grid)
+    #save_csv(greedy_grid, sys.argv[1], "greedy2")
     # print(greedy_grid)
     # save_csv(greedy_grid, sys.argv[1], "greedy")
 
