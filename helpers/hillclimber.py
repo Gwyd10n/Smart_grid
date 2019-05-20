@@ -1,7 +1,40 @@
-# evaluate the initial state. If it is a good state then return and exit.
-# keep looping until we get a solution or there are no new operaters left.
-# when found select and apply new operators
-# evaluate the new state if
-# a) it is a goal state then quit
-# b) it is better than the current state make it the new current state.
-# if it is not better, go back to step 2
+from copy import deepcopy
+from random import shuffle
+
+def hillclimber(grid):
+    cables = grid.get_cables()
+    batteries = grid.get_batteries()
+    houses = grid.get_houses()
+    ckeys = list(cables.keys())
+    n = 1000000
+
+    for i in range(n):
+        score = grid.tot_len()
+        shuffle(ckeys)
+        orgA = cables[ckeys[0]]
+        orgB = cables[ckeys[1]]
+        newA = deepcopy(orgA)
+        newB = deepcopy(orgB)
+
+        houseA = houses[orgA.get_id()]
+        houseB = houses[orgB.get_id()]
+
+        battA = batteries[orgA.get_batt()]
+        battB = batteries[orgB.get_batt()]
+
+        newA.change_route(houseA.get_coord(), battB.get_coord())
+        newA.add_batt(battB.get_id())
+        newB.change_route(houseB.get_coord(), battA.get_coord())
+        newB.add_batt(battA.get_id())
+
+        new_score = score - (orgA.get_length() + orgB.get_length()) + (newA.get_length() + newB.get_length())
+
+        if score > new_score:
+            grid.rem_cable(orgA.get_id())
+            grid.rem_cable(orgB.get_id())
+            grid.add_cable(newA)
+            grid.add_cable(newB)
+
+        print(score, new_score)
+
+    return grid

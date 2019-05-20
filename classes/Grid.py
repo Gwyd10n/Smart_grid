@@ -18,12 +18,6 @@ class Grid(object):
         self._cables = {}
         self._batteries = {}
         self._houses = {}
-        self._grid = []
-        for i in range(y_max + 1):
-            row = []
-            for j in range(x_max + 1):
-                row.append('')
-            self._grid.append(row)
 
     def __str__(self):
         """
@@ -51,13 +45,8 @@ class Grid(object):
             else:
                 cables += "\n\n" + self.get_cable(key).__str__()
 
-        grid = "Grid layout:\n["
-        for row in self._grid:
-            grid += f"\n{row}"
-        grid += "\n]"
-
         return (f"District: {self._id}\nx max: {self._x_max}\ny max: {self._y_max}\n\nbatteries:{batteries}\n\n"
-                f"houses:{houses} \n\ncables:{cables}\n{grid}")
+                f"houses:{houses} \n\ncables:{cables}")
 
     # Accessor methods (getters)
     def get_id(self):
@@ -116,6 +105,16 @@ class Grid(object):
         """
         return self._cables
 
+    def tot_len(self):
+        """
+        Calculate total length of all cables.
+        :return:
+        """
+        len = 0
+        for key in self._cables:
+            len += self._cables[key].get_length()
+        return len
+
     # Mutator methods (setters)
     def add_house(self, house):
         """
@@ -127,9 +126,6 @@ class Grid(object):
             self._houses[house.get_id()] = house
         else:
             print("Error: Key already in _houses")
-        coord = house.get_coord()
-        if self._grid[coord[1]][coord[0]] == '' or ('C' in self._grid[coord[1]][coord[0]]):
-            self._grid[coord[1]][coord[0]] = house.get_id()
 
     def add_battery(self, battery):
         """
@@ -141,9 +137,6 @@ class Grid(object):
             self._batteries[battery.get_id()] = battery
         else:
             print("Error: Key already in self._batteries")
-        coord = battery.get_coord()
-        if self._grid[coord[1]][coord[0]] == '' or self._grid[coord[1]][coord[0]] == 'C':
-            self._grid[coord[1]][coord[0]] = battery.get_id()
 
     def add_cable(self, cable):
         """
@@ -153,41 +146,20 @@ class Grid(object):
         """
         cable_id = cable.get_id()
         self._cables[cable_id] = cable
-        route = cable.get_route()
-        for i in range(len(route)-1):
-            x1 = route[i][0]
-            y1 = route[i][1]
-            x2 = route[i + 1][0]
-            y2 = route[i + 1][1]
 
-            if x1 - x2 == 0:
-                if y1 > y2:
-                    small = y2
-                else:
-                    small = y1
-                for y in range(small, small + abs(y1 - y2)+1):
-                    self._grid[y][x1] = self._grid[y][x1] + cable_id
-
-            elif y1 - y2 == 0:
-                if x1 > x2:
-                    small = x2
-                else:
-                    small = x1
-                for x in range(small, small + abs(x1 - x2)+1):
-                    self._grid[y1][x] = self._grid[y1][x] + cable_id
-
-            else:
-                print("Error: invalid route")
+    def rem_cable(self, key):
+        """
+        Removes cable from cables dict.
+        :param key: string
+        :return:
+        """
+        del self._cables[key]
 
     def clear_cables(self):
         """
-        Remove all cables.
-        :return: none
-        """
-        self._cables = {}
-
-    def total_len(self):
-        """
-        Calculate total length of all cables.
+        Clears connections, reset battery capacity
         :return:
         """
+        self._cables = {}
+        for key in self._batteries:
+            self._batteries[key].reset_cap()

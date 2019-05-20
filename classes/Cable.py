@@ -2,6 +2,7 @@
 # Gwydion Oostvogel, Sophie Schubert
 
 
+
 class Cable(object):
     def __init__(self, cable_id, price=9):
         """
@@ -11,7 +12,7 @@ class Cable(object):
         """
         self._id = cable_id
         self._price = price
-        self._battery_id = ''
+        self._battery_id = ""
         self._route = []
 
     def __str__(self):
@@ -37,15 +38,6 @@ class Cable(object):
         """
         return self._battery_id
 
-
-    def get_house(self):
-        """
-        Return house id of cable
-        :return: string
-        """
-        return self._house_id
-
-
     def get_price(self):
         """
         Return price of cable per segment.
@@ -58,10 +50,9 @@ class Cable(object):
         Calculate total length of cable.
         :return: int
         """
-        total_length = 0
-        for i in range(len(self._route)-1):
-            total_length += abs(self._route[i] - self._route[i+1])
-        return total_length
+        start = self._route[0]
+        end = self._route[-1]
+        return abs(start[0] - end[0]) + abs(start[1] - end[1])
 
     def get_route(self):
         """
@@ -89,27 +80,21 @@ class Cable(object):
         self._house_id = house_id
 
 
-    def add_route(self, start, end):
+    def add_route(self, house, battery):
         """
-        Adds route segment to routes
+        Adds route to cable from house to battery
         :param x: int
         :param y: int
         :return: none
         """
-        self._route.append([start[0], start[1]])
-        self._route.append([end[0], start[1]])
-        self._route.append([end[0], end[1]])
+        self._route.append((house[0], house[1]))
+        self._route.append((battery[0], house[1]))
+        self._route.append((battery[0], battery[1]))
 
-    def change_route(self, old_x, old_y, new_x, new_y):
+    def change_route(self, start, end):
         """
-        Change point of route.
-        :param old_x: int
-        :param old_y: int
-        :param new_x: int
-        :param new_y: int
+        Change route
         :return: none
         """
-        for n, coord in enumerate(self._route):
-            if coord == (old_x, old_y):
-                self._route[n] = [new_x, new_y]
-        return "Error: route not in routes"
+        self._route = []
+        self.add_route(start, end)

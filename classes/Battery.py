@@ -16,6 +16,7 @@ class Battery(object):
         self._id = id
         self._x = x
         self._y = y
+        self._max_cap = cap
         self._cap = cap
         self._type = type
         self._price = price
@@ -75,3 +76,10 @@ class Battery(object):
         :return: none
         """
         self._cap -= batt_in
+
+    def reset_cap(self):
+        """
+        Reset capacity
+        :return: none
+        """
+        self._cap = self._max_cap
