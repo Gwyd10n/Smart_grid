@@ -1,22 +1,23 @@
-#!/usr/bin/env python
-# Gwydion Oostvogel, Sophie Schubert
+# #!/usr/bin/env python
+# # Gwydion Oostvogel, Sophie Schubert
 
 from classes.Cable import Cable
 from random import shuffle
+
 
 def random(grid):
     max_iterations = 1000
     for i in range(max_iterations):
         try:
             grid.clear_cables()
-            greedy_grid = greedy_alg(grid)
-            return greedy_grid
+            random_grid = random_grid(grid)
+            return random_grid
         except KeyError:
             print(f"grid not solved, trying again for the {i}th time")
     print("no solution found")
 
 
-def greedy_alg(grid):
+def random_grid(grid):
     batteries = grid.get_batteries()
     bkeys = list(batteries.keys())
     shuffle(bkeys)
