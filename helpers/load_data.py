@@ -11,7 +11,6 @@ from classes.Battery import Battery
 from classes.House import House
 
 
-
 GRID = {}
 
 
@@ -27,6 +26,7 @@ def create_grid(grid_id, x, y, version):
     load_batteries(grid_id, version)
     load_houses(grid_id, version)
     return GRID[grid_id]
+
 
 def load_batteries(id, version):
     """
