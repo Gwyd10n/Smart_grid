@@ -34,7 +34,7 @@ def main():
 
     hill_grid = hillclimber(greedy_grid)
     # print(hill_grid)
-    # save_csv(hill_grid, sys.argv[1], "hillclimber")
+    save_csv(hill_grid, sys.argv[1], "hillclimber")
 
 
 if __name__ == "__main__":

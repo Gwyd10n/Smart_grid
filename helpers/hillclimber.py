@@ -6,7 +6,7 @@ def hillclimber(grid):
     batteries = grid.get_batteries()
     houses = grid.get_houses()
     ckeys = list(cables.keys())
-    n = 1000000
+    n = 10000
 
     for i in range(n):
         score = grid.tot_len()
