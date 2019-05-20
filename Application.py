@@ -6,6 +6,7 @@ import sys
 from helpers.load_data import create_grid
 from helpers.greedy import greedy
 from helpers.random import random
+from helpers.hillclimber import hillclimber
 from helpers.helpers import save_csv
 
 
@@ -25,9 +26,9 @@ def main():
 
     greedy_grid = greedy(grid)
     # print(greedy_grid)
-    save_csv(greedy_grid, sys.argv[1], "greedy0")
+    # save_csv(greedy_grid, sys.argv[1], "greedy")
 
-
+    print(hillclimber(greedy_grid))
 
 
 if __name__ == "__main__":
