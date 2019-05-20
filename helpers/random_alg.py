@@ -10,14 +10,22 @@ def random(grid):
     for i in range(max_iterations):
         try:
             grid.clear_cables()
+<<<<<<< HEAD:helpers/random_alg.py
             random_grid = random_grid(grid)
+=======
+            random_grid = random(grid)
+>>>>>>> c84d0b76e01f6a9a5773877851f564b8069fc6e1:helpers/random.py
             return random_grid
         except KeyError:
             print(f"grid not solved, trying again for the {i}th time")
     print("no solution found")
 
 
+<<<<<<< HEAD:helpers/random_alg.py
 def random_grid(grid):
+=======
+def random(grid):
+>>>>>>> c84d0b76e01f6a9a5773877851f564b8069fc6e1:helpers/random.py
     batteries = grid.get_batteries()
     bkeys = list(batteries.keys())
     shuffle(bkeys)

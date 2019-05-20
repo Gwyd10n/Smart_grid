@@ -6,14 +6,25 @@ def hillclimber(grid):
     cables = grid.get_cables()
     batteries = grid.get_batteries()
     houses = grid.get_houses()
-    ckeys = list(cables.keys())
-    n = 10000
+    us_ckeys = list(cables.keys())
+    ckeys = []
+    n = 1000000
+
+    for bkey in batteries:
+        group = []
+        for ckey in us_ckeys:
+            if cables[ckey].get_batt() == bkey:
+                group.append(ckey)
+        ckeys.append(group)
 
     for i in range(n):
         score = grid.tot_len()
         shuffle(ckeys)
-        orgA = cables[ckeys[0]]
-        orgB = cables[ckeys[1]]
+        shuffle(ckeys[0])
+        shuffle(ckeys[1])
+
+        orgA = cables[ckeys[0][0]]
+        orgB = cables[ckeys[1][1]]
         newA = deepcopy(orgA)
         newB = deepcopy(orgB)
 
@@ -36,6 +47,6 @@ def hillclimber(grid):
             grid.add_cable(newA)
             grid.add_cable(newB)
 
-        print(score, new_score)
+        print('iteration:', i, 'best:', score, 'current:', new_score)
 
     return grid
