@@ -2,13 +2,15 @@ from copy import deepcopy
 from random import shuffle
 
 
-def hillclimber(grid):
+def hillclimber(grid, n):
+    # Get cable, house and battery dicts
     cables = grid.get_cables()
     batteries = grid.get_batteries()
     houses = grid.get_houses()
+    # Get keys from the cable dictionary
     us_ckeys = list(cables.keys())
     ckeys = []
-    n = 1000000
+
 
     for bkey in batteries:
         group = []
@@ -16,6 +18,8 @@ def hillclimber(grid):
             if cables[ckey].get_batt() == bkey:
                 group.append(ckey)
         ckeys.append(group)
+    print(grid)
+    print(ckeys)
 
     for i in range(n):
         score = grid.tot_len()
@@ -24,7 +28,7 @@ def hillclimber(grid):
         shuffle(ckeys[1])
 
         orgA = cables[ckeys[0][0]]
-        orgB = cables[ckeys[1][1]]
+        orgB = cables[ckeys[1][0]]
         newA = deepcopy(orgA)
         newB = deepcopy(orgB)
 

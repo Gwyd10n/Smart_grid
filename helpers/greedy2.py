@@ -20,7 +20,8 @@ def greedy2(grid):
     hkeys = list(houses.keys())
 
     # For each battery:
-    for bkey in bkeys:
+    for idx, bkey in enumerate(bkeys):
+        print(idx)
         # Houses to connect to this battery
         conn_houses = []
         battery = batteries[bkey]
@@ -53,7 +54,7 @@ def greedy2(grid):
                     best = curr_manh
 
             # If no house is found, stop searching
-            if not conn_house:
+            if not conn_house or len(hkeys) < 5 - idx:
                 houses_av = False
             # Else add found house to houses to connect
             else:

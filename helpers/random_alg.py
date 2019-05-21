@@ -32,7 +32,7 @@ def random_grid(grid):
         if batteries[bkeys[j]].get_cap() > houses[hkeys[i]].get_max():
             batteries[bkeys[j]].red_cap(houses[hkeys[i]].get_max())
             cable = Cable(houses[hkeys[i]].get_id())
-            cable.add_batt(batteries[bkeys[j]].get_id)
+            cable.add_batt(batteries[bkeys[j]].get_id())
             cable.add_route(houses[hkeys[i]].get_coord(), batteries[bkeys[j]].get_coord())
             grid.add_cable(cable)
             i += 1
