@@ -6,7 +6,7 @@ import sys
 from helpers.load_data import create_grid
 from helpers.greedy import greedy
 from helpers.greedy2 import greedy2
-from helpers.random import random
+from helpers.random_alg import random
 from helpers.hillclimber import hillclimber
 from helpers.helpers import save_csv
 
