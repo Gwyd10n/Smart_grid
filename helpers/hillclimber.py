@@ -27,8 +27,6 @@ def hillclimber(grid, n):
         shuffle(ckeys[0])
         shuffle(ckeys[1])
 
-        print(ckeys)
-
         orgA = cables[ckeys[0][0]]
         orgB = cables[ckeys[1][0]]
         newA = deepcopy(orgA)

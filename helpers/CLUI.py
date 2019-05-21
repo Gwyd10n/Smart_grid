@@ -10,6 +10,7 @@ from helpers.random_alg import random
 from helpers.hillclimber import hillclimber
 from helpers.sim_annealing import sim_ann
 from helpers.helpers import save_csv
+from helpers.visualizer import plot
 
 ALGORITHMS = {'random': random, 'greedy': greedy, 'greedy2': greedy2,
               'hillclimber': hillclimber, 'simulated_annealing': sim_ann}
@@ -75,11 +76,14 @@ def back():
     basic_command(user_in)
     if user_in == 'n':
         basic_command('quit')
+    elif user_in != 'y':
+        print('YES OR NO')
+        return back()
 
 def basic_command(user_in):
     user_in = user_in.lower()
     if user_in == 'quit':
-        sys.exit("Goodbye")
+        sys.exit("This conversation can serve no purpose anymore. Good-bye.")
     elif user_in == 'help':
         print("""
     There is no distinction between upper and lower case.
@@ -93,7 +97,7 @@ def basic_command(user_in):
     GREEDY: connects each house to the closest battery in a random order
     GREEDY2: connect each battery to the closest house in a random order
     HILLCLIMBER: for a valid solution, switch battery for two houses, keep better state
-    SIMULATED ANNEALING: for a valid solution, HIER MOET NOG IETS""")
+    SIMULATED ANNEALING: for a valid solution, switch battery for two houses, keep better state respecting local minima""")
         back()
 
 
@@ -101,8 +105,9 @@ def choose_distr():
     print("district to solve:\n[1] [2] [3]")
     user_in = input('>')
     basic_command(user_in)
-    if not user_in.isnumeric() and user_in <= 3:
+    try:
+        int(user_in)
+    except ValueError:
         print('not a valid number, choose from numbers below')
         return choose_distr()
-    else:
-        return user_in
+    return user_in
