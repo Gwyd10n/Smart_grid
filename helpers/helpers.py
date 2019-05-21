@@ -16,7 +16,7 @@ def save_csv(grid, distr, alg):
     :param grid: object
     :param distr: int
     :param algorithm: string
-    :return: int
+    :return: string
     """
     houses = grid.get_houses()
     batteries = grid.get_batteries()
@@ -38,3 +38,5 @@ def save_csv(grid, distr, alg):
     with open(path, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerows(rows)
+    csvfile.close()
+    return path

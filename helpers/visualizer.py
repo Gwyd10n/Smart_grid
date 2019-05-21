@@ -1,9 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 import csv
-import itertools
-
 
 def plot(path):
 
@@ -59,11 +56,5 @@ def plot(path):
                 if idx + 1 == len(line):
                     break
                 plt.plot((point[0], line[idx + 1][0]), (point[1], line[idx + 1][1]), color="r")
-
+    csvfile.close()
     plt.show()
-
-
-if __name__ == "__main__":
-    path = os.path.dirname(os.path.realpath(__file__)).replace("helpers", "data\\results\\District_1_greedy.csv")
-
-    plot(path)
