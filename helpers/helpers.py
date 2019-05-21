@@ -1,7 +1,7 @@
-from classes.Grid import Grid
-from classes.Battery import Battery
-from classes.House import House
-from classes.Cable import Cable
+from classes.grid import Grid
+from classes.battery import Battery
+from classes.house import House
+from classes.cable import Cable
 import csv
 import os
 

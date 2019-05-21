@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
 
-from classes.Cable import Cable
+from classes.cable import Cable
 from helpers.helpers import get_man
 from random import shuffle
 
