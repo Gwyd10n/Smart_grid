@@ -6,19 +6,6 @@ from random import shuffle
 
 
 def greedy2(grid):
-    greedy_alg_2(grid)
-
-    # max_iterations = 10
-    # for i in range(max_iterations):
-    #     try:
-    #         grid.clear_cables()
-    #         return greedy_alg_2(grid)
-    #     except KeyError:
-    #         pass
-    # exit("Greedy not solved")
-
-
-def greedy_alg_2(grid):
     """
     This is a greedy algorithm which connects the closest house to the battery
     by looping through the batteries.
@@ -28,37 +15,53 @@ def greedy_alg_2(grid):
     bkeys = list(batteries.keys())
     shuffle(bkeys)
 
-    # Shuffle the list with house keys
+    # Create the list with house keys
     houses = grid.get_houses()
     hkeys = list(houses.keys())
 
+    # For each battery:
     for bkey in bkeys:
+        # Houses to connect to this battery
         conn_houses = []
-        shuffle(hkeys)
         battery = batteries[bkey]
         b_cap = battery.get_cap()
-        while 1:
+
+        # Check if there are any houses still available
+        if len(hkeys) > 0:
+            houses_av = True
+        else:
+            houses_av = False
+
+        # While houses are still available:
+        while houses_av:
+            # Initial best distance is max dist of grid
             best = grid.get_max()[0] + grid.get_max()[1]
+            # Variable to save closest house
             conn_house = ''
+            # Search for closest house:
             for hkey in hkeys:
+                # Get house information
                 house = houses[hkey]
-                curr_manh = get_man(house.get_coord(), battery.get_coord())
                 h_out = house.get_max()
+                # Get manhattan distance current house to battery
+                curr_manh = get_man(house.get_coord(), battery.get_coord())
 
-
+                # Check if the current manhattan distance is less then the best distance
+                # Check if the battery has enough capacity to connect the house
                 if best >= curr_manh and b_cap >= h_out:
-                    b_cap -= h_out
                     conn_house = hkey
                     best = curr_manh
 
-            if conn_house == '':
-                break
+            # If no house is found, stop searching
+            if not conn_house:
+                houses_av = False
+            # Else add found house to houses to connect
             else:
+                b_cap -= h_out
                 conn_houses.append(conn_house)
                 hkeys.remove(conn_house)
 
-        # print(conn_houses)
-
+        # Connect each house to the current battery
         for house in conn_houses:
             house = houses[house]
             batteries[bkey].red_cap(house.get_max())
@@ -66,5 +69,6 @@ def greedy_alg_2(grid):
             cable.add_batt(bkey)
             cable.add_route(house.get_coord(), batteries[bkey].get_coord())
             grid.add_cable(cable)
-    print(grid)
+
+    # Return grid with added cables
     return grid
