@@ -2,13 +2,12 @@ from copy import deepcopy
 from random import shuffle
 
 
-def hillclimber(grid):
+def sim_ann(grid, n):
     cables = grid.get_cables()
     batteries = grid.get_batteries()
     houses = grid.get_houses()
     us_ckeys = list(cables.keys())
     ckeys = []
-    n = 1000000
 
     for bkey in batteries:
         group = []
