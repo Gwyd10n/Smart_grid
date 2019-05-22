@@ -45,7 +45,6 @@ def plot(path):
         plt.grid(True, which='minor', color='#999999', linestyle='--')
 
         for line in lines:
-            print(line)
             for idx, point in enumerate(line):
                 if idx + 1 == len(line):
                     break
