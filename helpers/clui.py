@@ -15,7 +15,7 @@ from helpers.visualizer import plot
 ALGORITHMS = {'random': random, 'greedy': greedy, 'greedy2': greedy2,
               'hillclimber': hillclimber, 'simulated_annealing': sim_ann}
 
-def CLUI():
+def clui():
     print('Type HELP for list of commands')
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
@@ -31,7 +31,7 @@ def another():
     if user_in == 'y':
         CLUI()
     else:
-        basic_command('quit')
+        command('quit')
 
 def prompt_plot(path):
     print('Plot solution?\n yes: [y], no: [n]')
@@ -86,7 +86,7 @@ def prompt_alg():
     print("What algorithm should be used (type INFO to get description of algorithms)")
     print(''.join(['{0}{1}'.format(str(key) + ': ', value + '  ') for key, value in algorithms.items()]), end=' ')
     user_in = input('\n> ')
-    basic_command(user_in)
+    command(user_in)
     try:
         user_in = int(user_in)
     except ValueError:
@@ -101,17 +101,17 @@ def prompt_alg():
 def back():
     print("Go back?\nyes: [y], no: [n]")
     user_in = input('> ').lower()
-    basic_command(user_in)
+    command(user_in)
     if user_in == 'n':
-        basic_command('quit')
+        command('quit')
     elif user_in != 'y':
         print('Please choose one...')
         return back()
 
-def basic_command(user_in):
+def command(user_in):
     user_in = user_in.lower()
     if user_in == 'quit':
-        sys.exit('This conversation can serve no purpose anymore. Good-bye.')
+        sys.exit('Good-bye.')
     elif user_in == 'help':
         print("""
     There is no distinction between upper and lower case.
@@ -136,7 +136,7 @@ def basic_command(user_in):
 def choose_distr():
     print("District to solve:\n[1] [2] [3]")
     user_in = input('> ')
-    basic_command(user_in)
+    command(user_in)
     try:
         int(user_in)
     except ValueError:

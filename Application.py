@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
 
-from helpers.CLUI import CLUI
+from helpers.clui import clui
 
 if __name__ == "__main__":
-    CLUI()
+    clui()

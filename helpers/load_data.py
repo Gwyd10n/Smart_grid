@@ -6,9 +6,9 @@ import os
 import csv
 import re
 
-from classes.Grid import Grid
-from classes.Battery import Battery
-from classes.House import House
+from classes.grid import Grid
+from classes.battery import Battery
+from classes.house import House
 
 
 GRID = {}
