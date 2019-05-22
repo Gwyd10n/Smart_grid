@@ -24,6 +24,7 @@ def clui():
     new_grid = do_alg(algorithm, grid)
     path = save(new_grid, district, algorithm)
     prompt_plot(path)
+    print(new_grid.get_cost())
 
 def another():
     print('Another?\n yes: [y], no: [n]')
@@ -55,7 +56,7 @@ def save(new_grid, district, algorithm):
     else:
         print('Sure?\n yes: [y], no: [n]')
         user_in = input('> ').lower()
-        if user_in == 'y':
+        if user_in == 'n':
             save(new_grid, district, algorithm)
 
 def do_alg(alg, grid):

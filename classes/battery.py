@@ -51,6 +51,13 @@ class Battery(object):
         """
         return self._cap
 
+    def get_type(self):
+        """
+        Returns type of battery
+        :return: string
+        """
+        return self._type
+
     def get_price(self):
         """
         Returns price
