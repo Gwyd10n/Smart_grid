@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
 
+import os
+import csv
 from helpers.load_data import create_grid
 from helpers.greedy import greedy
 from helpers.greedy2 import greedy2
@@ -8,7 +10,6 @@ from helpers.random_alg import random
 from helpers.hillclimber import hillclimber
 from helpers.sim_annealing import sim_ann
 from helpers.kmeans import kmeans
-from helpers.helpers import save_csv
 from helpers.clui import prompt_alg, choose_distr
 
 
@@ -16,32 +17,23 @@ ALGORITHMS = {'random': random, 'greedy': greedy, 'greedy2': greedy2,
               'hillclimber': hillclimber, 'simulated_annealing': sim_ann}
 
 def clui_test():
+    print('TEST INTERFACE')
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
     alg = prompt_alg()
     result = do_alg(alg, grid)
-    print(result)
+    path = save(result, district, alg)
+    print('Saved result at: ', path)
 
 
+def save(result, distr, alg):
+    path = os.path.dirname(__file__).replace("helpers", f"data\\results\\TEST_District_{distr}_{alg}_n_times.csv")
 
-def save(new_grid, district, algorithm):
-    print('Would you like to save this configuration?\n yes: [y], no: [n]')
-    user_in = input('> ').lower()
-    if user_in == 'y':
-        print('Add custom name?\n yes: [y], no: [n]')
-        user_in = input('> ').lower()
-        if user_in == 'y':
-            name = '_' + input('Name: >')
-            path = save_csv(new_grid, district, algorithm + name)
-        else:
-            path = save_csv(new_grid, district, algorithm)
-        print(f'Saved csv file to {path}')
-        return path
-    else:
-        print('Sure?\n yes: [y], no: [n]')
-        user_in = input('> ').lower()
-        if user_in == 'n':
-            save(new_grid, district, algorithm)
+    with open(path, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(result)
+    csvfile.close()
+    return path
 
 def do_alg(alg, grid):
     print('Number of solutions')
