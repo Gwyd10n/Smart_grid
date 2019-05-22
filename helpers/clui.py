@@ -20,9 +20,11 @@ def clui():
     print('Type HELP for list of commands')
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
-    # kmeans?
+    ###################
+    # test kmeans
     kmean = kmeans(grid)
     print(kmean)
+    ###################
     algorithm = prompt_alg()
     new_grid = do_alg(algorithm, grid)
     print('Cost for this configuration:', new_grid.get_cost())
