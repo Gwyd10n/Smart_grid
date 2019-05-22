@@ -17,21 +17,9 @@ ALGORITHMS = {'random': random, 'greedy': greedy, 'greedy2': greedy2,
 def clui_test():
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
+    alg = prompt_alg()
+    do_alg()
 
-
-
-def clui():
-    print('Type HELP for list of commands')
-    ###################
-    # test kmeans
-    kmean = kmeans(grid)
-    print(kmean)
-    ###################
-    algorithm = prompt_alg()
-    new_grid = do_alg(algorithm, grid)
-    print('Cost for this configuration:', new_grid.get_cost())
-    path = save(new_grid, district, algorithm)
-    prompt_plot(path)
 
 
 def save(new_grid, district, algorithm):
@@ -54,6 +42,13 @@ def save(new_grid, district, algorithm):
             save(new_grid, district, algorithm)
 
 def do_alg(alg, grid):
+    print('Number of solutions')
+    user_in = input('> ')
+    try:
+        n_sol = int(user_in)
+    except ValueError:
+        print('Not a valid number')
+
     if alg == 'hillclimber' or alg == 'simulated_annealing':
         print('How many iterations')
         n = input('> ')
@@ -74,11 +69,13 @@ def do_alg(alg, grid):
             new_grid = ALGORITHMS[algorithms[user_in]](grid)
             return ALGORITHMS[alg](new_grid, n)
     else:
-        return ALGORITHMS[alg](grid)
+        results = []
+        grid = ALGORITHMS[alg](grid)
+        grid.get_cost()
 
 def prompt_alg():
     algorithms = {0: 'random', 1: 'greedy', 2: 'greedy2', 3: 'hillclimber', 4: 'simulated_annealing'}
-    print("What algorithm should be used (type INFO to get description of algorithms)")
+    print('What algorithm should be used')
     print(''.join(['{0}{1}'.format(str(key) + ': ', value + '  ') for key, value in algorithms.items()]), end=' ')
     user_in = input('\n> ')
     command(user_in)
