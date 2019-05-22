@@ -50,7 +50,6 @@ def plot(path):
 
         plt.grid(True, which='minor', color='#999999', linestyle='--')
 
-<<<<<<< HEAD
         # for line in lines:
         #     print(line)
         #     for idx, point in enumerate(line):
@@ -65,13 +64,4 @@ if __name__ == "__main__":
     path = os.path.dirname(os.path.realpath(__file__)).replace("helpers", "data\\results\\District_1_greedy.csv")
     # print(path)
     plot(path)
-=======
-        for line in lines:
-            print(line)
-            for idx, point in enumerate(line):
-                if idx + 1 == len(line):
-                    break
-                plt.plot((point[0], line[idx + 1][0]), (point[1], line[idx + 1][1]), color="r")
     csvfile.close()
-    plt.show()
->>>>>>> b09b31e25c5de05f8541f6677b94da0cf599b90d
