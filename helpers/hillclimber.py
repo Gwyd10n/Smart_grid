@@ -11,15 +11,12 @@ def hillclimber(grid, n):
     us_ckeys = list(cables.keys())
     ckeys = []
 
-
     for bkey in batteries:
         group = []
         for ckey in us_ckeys:
             if cables[ckey].get_batt() == bkey:
                 group.append(ckey)
         ckeys.append(group)
-    print(grid)
-    print(ckeys)
 
     for i in range(n):
         score = grid.tot_len()
