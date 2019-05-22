@@ -9,6 +9,7 @@ from helpers.greedy2 import greedy2
 from helpers.random_alg import random
 from helpers.hillclimber import hillclimber
 from helpers.sim_annealing import sim_ann
+from helpers.kmeans import kmeans
 from helpers.helpers import save_csv
 from helpers.visualizer import plot
 
@@ -20,6 +21,8 @@ def clui():
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
     # kmeans?
+    kmean = kmeans(grid)
+    print(kmean)
     algorithm = prompt_alg()
     new_grid = do_alg(algorithm, grid)
     print('Cost for this configuration:', new_grid.get_cost())
