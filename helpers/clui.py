@@ -35,7 +35,7 @@ def another():
     print('Another?\n yes: [y], no: [n]')
     user_in = input('> ').lower()
     if user_in == 'y':
-        CLUI()
+        clui()
     else:
         command('quit')
 
@@ -52,7 +52,7 @@ def save(new_grid, district, algorithm):
         print('Add custom name?\n yes: [y], no: [n]')
         user_in = input('> ').lower()
         if user_in == 'y':
-            name = '_' + input('Name: >')
+            name = '_' + input('Name: > ')
             path = save_csv(new_grid, district, algorithm + name)
         else:
             path = save_csv(new_grid, district, algorithm)
