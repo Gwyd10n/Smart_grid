@@ -22,9 +22,9 @@ def clui():
     # kmeans?
     algorithm = prompt_alg()
     new_grid = do_alg(algorithm, grid)
+    print('Cost for this configuration:', new_grid.get_cost())
     path = save(new_grid, district, algorithm)
     prompt_plot(path)
-    print(new_grid.get_cost())
 
 def another():
     print('Another?\n yes: [y], no: [n]')
