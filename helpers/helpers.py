@@ -24,10 +24,10 @@ def save_csv(grid, distr, alg):
     path = os.path.dirname(__file__).replace("helpers", f"data\\results\\District_{distr}_{alg}.csv")
     rows = []
 
-    rows.append([distr, alg, grid.tot_len()])
+    rows.append([distr, alg, grid.tot_len(), grid.get_cost()])
     for bkey in batteries:
         battery = batteries[bkey]
-        rows.append([battery.get_id(), battery.get_coord()[0], battery.get_coord()[1], battery.get_cap()])
+        rows.append([battery.get_id(), battery.get_coord()[0], battery.get_coord()[1], battery.get_cap(), battery.get_type()])
         for ckey in cables:
             if battery.get_id() == cables[ckey].get_batt():
                 house = houses[ckey]

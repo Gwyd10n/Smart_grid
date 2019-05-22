@@ -115,6 +115,16 @@ class Grid(object):
             len += self._cables[key].get_length()
         return len
 
+    def get_cost(self):
+        """
+        Calculate total cost of configuration
+        :return: float
+        """
+        cost = self.tot_len()
+        for battery in self._batteries:
+            cost += self._batteries[battery].get_price()
+        return cost
+
     # Mutator methods (setters)
     def add_house(self, house):
         """
