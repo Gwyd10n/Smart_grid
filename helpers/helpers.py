@@ -49,12 +49,7 @@ def upper_bound(list):
     for i in range(len(list)):
         upp += (max(list[i]))
 
-    return up
-
-def move(kmean_x, kmean_y):
-    """
-    Move batteries to specific x or y location
-    """
+    return upp
 
 
 def save_csv(grid, distr, alg):

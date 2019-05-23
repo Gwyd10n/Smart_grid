@@ -13,7 +13,7 @@ if __name__ == "__main__":
         clui_test()
     else:
         clui()
-    
+
     # grid = create_grid(0, 50, 50, 2)
     # g = distance(grid)
     # lower_bound(g)
