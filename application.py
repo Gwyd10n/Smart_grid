@@ -10,15 +10,15 @@ from helpers.kmeans import kmeans_algorithm
 
 if __name__ == "__main__":
 
-    # if len(sys.argv) == 2 and sys.argv[1] == 'test':
-    #     clui_test()
-    # else:
-    #     clui()
+    if len(sys.argv) == 2 and sys.argv[1] == 'test':
+        clui_test()
+    else:
+        clui()
 
-    grid = create_grid(0, 50, 50, 2)
-    g = distance(grid)
-    lower_bound(g)
-    upper_bound(g)
-    move(grid)
-
-    kmeans_algorithm(grid)
+    # grid = create_grid(0, 50, 50, 2)
+    # g = distance(grid)
+    # lower_bound(g)
+    # upper_bound(g)
+    # move(grid)
+    #
+    # kmeans_algorithm(grid)
