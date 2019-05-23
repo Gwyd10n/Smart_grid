@@ -8,7 +8,7 @@ from helpers.greedy import greedy
 from helpers.greedy2 import greedy2
 from helpers.random_alg import random
 from helpers.hillclimber import hillclimber
-from helpers.sim_annealing import sim_ann
+from sim_annealing import sim_ann
 from helpers.kmeans import kmeans
 from helpers.helpers import save_csv
 from helpers.visualizer import plot
@@ -21,17 +21,19 @@ def clui():
     print('Type HELP for list of commands')
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
-    ###################
-    # test kmeans
-    # kmean = kmeans(grid)
-    # print(kmean)
-    ###################
+    do_kmean(grid)
     show_bounds(grid)
     algorithm = prompt_alg()
     new_grid = do_alg(algorithm, grid)
     print('Cost for this configuration:', new_grid.get_cost())
     path = save(new_grid, district, algorithm)
     prompt_plot(path)
+
+def do_kmean(grid):
+    print('Place batteries using kmeans?\n yes: [y] no: [n]')
+    user_in = input('> ')
+    if yn(user_in):
+        kmeans(grid)
 
 def show_bounds(grid):
     print('Calculate upper and lower bound?\n yes: [y] no: [n]')
@@ -50,13 +52,13 @@ def another():
         command('quit')
 
 def prompt_plot(path):
-    print('Plot solution?\n(NOTE: can only plot if configuration is saved)\n yes: [y], no: [n]')
+    print('Plot solution?\n yes: [y], no: [n]')
     user_in = input('> ').lower()
     if yn(user_in):
         plot(path)
 
 def save(new_grid, district, algorithm):
-    print('Would you like to save this configuration?\n yes: [y], no: [n]')
+    print('Would you like to save this configuration?\n(NOTE: can only plot if configuration is saved)\n yes: [y], no: [n]')
     user_in = input('> ').lower()
     if yn(user_in):
         print('Add custom name?\n yes: [y], no: [n]')
@@ -120,9 +122,6 @@ def back():
     command(user_in)
     if not yn(user_in):
         command('quit')
-    elif yn(user_in) == None:
-        print('Please choose one...')
-        return back()
 
 def yn(u_in):
     u_in = u_in.lower()
@@ -131,7 +130,8 @@ def yn(u_in):
     elif u_in == 'n':
         return False
     else:
-        return None
+        print('Please choose one...')
+        return back()
 
 def command(user_in):
     user_in = user_in.lower()
