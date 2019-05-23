@@ -122,9 +122,6 @@ def back():
     command(user_in)
     if not yn(user_in):
         command('quit')
-    elif yn(user_in) == None:
-        print('Please choose one...')
-        return back()
 
 def yn(u_in):
     u_in = u_in.lower()
@@ -133,7 +130,8 @@ def yn(u_in):
     elif u_in == 'n':
         return False
     else:
-        return None
+        print('Please choose one...')
+        return back()
 
 def command(user_in):
     user_in = user_in.lower()
