@@ -20,9 +20,11 @@ def clui():
     print('Type HELP for list of commands')
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
-    # kmeans?
+    ###################
+    # test kmeans
     kmean = kmeans(grid)
     print(kmean)
+    ###################
     algorithm = prompt_alg()
     new_grid = do_alg(algorithm, grid)
     print('Cost for this configuration:', new_grid.get_cost())
@@ -33,7 +35,7 @@ def another():
     print('Another?\n yes: [y], no: [n]')
     user_in = input('> ').lower()
     if user_in == 'y':
-        CLUI()
+        clui()
     else:
         command('quit')
 
@@ -50,7 +52,7 @@ def save(new_grid, district, algorithm):
         print('Add custom name?\n yes: [y], no: [n]')
         user_in = input('> ').lower()
         if user_in == 'y':
-            name = '_' + input('Name: >')
+            name = '_' + input('Name: > ')
             path = save_csv(new_grid, district, algorithm + name)
         else:
             path = save_csv(new_grid, district, algorithm)
