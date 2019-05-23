@@ -50,13 +50,13 @@ def another():
         command('quit')
 
 def prompt_plot(path):
-    print('Plot solution?\n(NOTE: can only plot if configuration is saved)\n yes: [y], no: [n]')
+    print('Plot solution?\n yes: [y], no: [n]')
     user_in = input('> ').lower()
     if yn(user_in):
         plot(path)
 
 def save(new_grid, district, algorithm):
-    print('Would you like to save this configuration?\n yes: [y], no: [n]')
+    print('Would you like to save this configuration?\n(NOTE: can only plot if configuration is saved)\n yes: [y], no: [n]')
     user_in = input('> ').lower()
     if yn(user_in):
         print('Add custom name?\n yes: [y], no: [n]')
