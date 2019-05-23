@@ -19,6 +19,18 @@ pip install -r requirements.txt
 ````
 **Structure**
 
+The code is divided into different folders, which we describe here one by one.
+
+*Classes*
+
+This folder contains the following objects.
+- Battery
+- Cable
+- Grid
+- House
+
+For more information about these objects, you can have a look into the [properties and methods]().
+
 To start the users interface, you have to run the following in your terminal:
 
 ```

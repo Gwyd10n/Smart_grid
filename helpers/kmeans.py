@@ -15,8 +15,9 @@ def kmeans(grid):
     centers = centers.astype(int)
     print(centers)
 
-# def kmeans_algorithm(grid):
-#     """
-#     Looking for locations for the batteries where the distance
-#     between battery and house is the lowest
-#     """
+def kmeans_algorithm(grid):
+    """
+    Looking for locations for the batteries where the distance
+    between battery and house is the lowest
+    """
+    

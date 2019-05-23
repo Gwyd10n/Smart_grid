@@ -1,19 +1,13 @@
-from classes.grid import Grid
-from classes.battery import Battery
-from classes.house import House
-from classes.cable import Cable
 import csv
 import os
 
 
 def get_man(coord_start, coord_end):
 
-    manhatten = abs(coord_start[0] - coord_end[0]) + abs(coord_start[1] - coord_end[1])
-
-    return manhatten
+    return abs(coord_start[0] - coord_end[0]) + abs(coord_start[1] - coord_end[1])
 
 
-def distance(manhatten):
+def distance(grid):
     """
     A list with all the distances from houses to batteries
     """
@@ -32,9 +26,31 @@ def distance(manhatten):
             distances.append(distance)
         distance_list.append(distances)
 
-
+    print(distance_list)
     return distance_list
 
+
+def lower_bound(list):
+    """
+    Calculates the lower boud
+    """
+    low = 0
+    for i in range(len(list)):
+        low += (min(list[i]))
+
+    print("Lower bound: ", low)
+
+
+def upper_bound(list):
+    """
+    Calculates the upper bound by looping through the houses and
+    calculates the maximum distance.
+    """
+    upp = 0
+    for i in range(len(list)):
+        upp += (max(list[i]))
+
+    print("Upper bound: ", upp)
 
 
 def save_csv(grid, distr, alg):
