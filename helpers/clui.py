@@ -21,17 +21,19 @@ def clui():
     print('Type HELP for list of commands')
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
-    ###################
-    # test kmeans
-    # kmean = kmeans(grid)
-    # print(kmean)
-    ###################
+    do_kmean(grid)
     show_bounds(grid)
     algorithm = prompt_alg()
     new_grid = do_alg(algorithm, grid)
     print('Cost for this configuration:', new_grid.get_cost())
     path = save(new_grid, district, algorithm)
     prompt_plot(path)
+
+def do_kmean(grid):
+    print('Place batteries using kmeans?\n yes: [y] no: [n]')
+    user_in = input('> ')
+    if yn(user_in):
+        kmeans(grid)
 
 def show_bounds(grid):
     print('Calculate upper and lower bound?\n yes: [y] no: [n]')
