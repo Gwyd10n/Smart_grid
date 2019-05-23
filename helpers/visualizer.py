@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import csv
 
+
 def plot(path):
 
     with open(path, 'r') as csvfile:
