@@ -9,10 +9,14 @@ def kmeans(grid):
     for hkey in houses:
         coordinate = houses[hkey].get_coord()
         coordinates.append(coordinate)
-    kmeans = KMeans(n_clusters=5, random_state=2)
+    kmeans = KMeans(n_clusters=5, random_state=3)
     kmeans.fit(coordinates)
     centers = kmeans.cluster_centers_
-
+    centers = centers.astype(int)
     print(centers)
 
 # def kmeans_algorithm(grid):
+#     """
+#     Looking for locations for the batteries where the distance
+#     between battery and house is the lowest
+#     """

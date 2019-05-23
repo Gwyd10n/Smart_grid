@@ -7,7 +7,34 @@ import os
 
 
 def get_man(coord_start, coord_end):
-    return abs(coord_start[0] - coord_end[0]) + abs(coord_start[1] - coord_end[1])
+
+    manhatten = abs(coord_start[0] - coord_end[0]) + abs(coord_start[1] - coord_end[1])
+
+    return manhatten
+
+
+def distance(manhatten):
+    """
+    A list with all the distances from houses to batteries
+    """
+    houses = grid.get_houses()
+    batteries = grid.get_batteries()
+
+    distance = 0
+    distance_list = []
+
+    # Iterate over houses
+    for hkey in houses:
+        distances = []
+        for bkey in batteries:
+            # Get manhatten distances
+            distance = get_man(houses[hkey].get_coord(), batteries[bkey].get_coord())
+            distances.append(distance)
+        distance_list.append(distances)
+
+
+    return distance_list
+
 
 
 def save_csv(grid, distr, alg):
