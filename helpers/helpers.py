@@ -58,6 +58,7 @@ def move(grid):
     batteries = grid.get_batteries()
 
     for bkey in batteries:
+        print(batteries[bkey].get_coord())
         batteries[bkey].set_coord(x, y, """doe hier je nieuwe x, y waarden, zie ook set_coord() methode in batteries""")
 
 
