@@ -120,7 +120,7 @@ class Grid(object):
         Calculate total cost of configuration
         :return: float
         """
-        cost = self.tot_len()
+        cost = self.tot_len() * 9
         for battery in self._batteries:
             cost += self._batteries[battery].get_price()
         return cost
