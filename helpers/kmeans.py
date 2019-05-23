@@ -19,4 +19,3 @@ def kmeans_algorithm(grid):
     Looking for locations for the batteries where the distance
     between battery and house is the lowest
     """
-    
