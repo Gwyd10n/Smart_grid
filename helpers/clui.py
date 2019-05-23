@@ -12,6 +12,7 @@ from helpers.sim_annealing import sim_ann
 from helpers.kmeans import kmeans
 from helpers.helpers import save_csv
 from helpers.visualizer import plot
+from helpers.helpers import upper_bound, lower_bound, distance
 
 ALGORITHMS = {'random': random, 'greedy': greedy, 'greedy2': greedy2,
               'hillclimber': hillclimber, 'simulated_annealing': sim_ann}
@@ -22,36 +23,45 @@ def clui():
     grid = create_grid(0, 50, 50, district)
     ###################
     # test kmeans
-    kmean = kmeans(grid)
-    print(kmean)
+    # kmean = kmeans(grid)
+    # print(kmean)
     ###################
+    show_bounds(grid)
     algorithm = prompt_alg()
     new_grid = do_alg(algorithm, grid)
     print('Cost for this configuration:', new_grid.get_cost())
     path = save(new_grid, district, algorithm)
     prompt_plot(path)
 
+def show_bounds(grid):
+    print('Calculate upper and lower bound?\n yes: [y] no: [n]')
+    user_in = input('> ')
+    command(user_in)
+    if yn(user_in):
+        print('Upper bound: ', upper_bound(distance(grid)))
+        print('Lower bound: ', lower_bound(distance(grid)))
+
 def another():
     print('Another?\n yes: [y], no: [n]')
     user_in = input('> ').lower()
-    if user_in == 'y':
+    if yn(user_in):
         clui()
     else:
         command('quit')
 
 def prompt_plot(path):
-    print('Plot solution?\n yes: [y], no: [n]')
+    print('Plot solution?\n(NOTE: can only plot if configuration is saved)\n yes: [y], no: [n]')
     user_in = input('> ').lower()
-    if user_in == 'y':
+    if yn(user_in):
         plot(path)
 
 def save(new_grid, district, algorithm):
     print('Would you like to save this configuration?\n yes: [y], no: [n]')
     user_in = input('> ').lower()
-    if user_in == 'y':
+    if yn(user_in):
         print('Add custom name?\n yes: [y], no: [n]')
         user_in = input('> ').lower()
-        if user_in == 'y':
+        if yn(user_in):
             name = '_' + input('Name: > ')
             path = save_csv(new_grid, district, algorithm + name)
         else:
@@ -61,7 +71,7 @@ def save(new_grid, district, algorithm):
     else:
         print('Sure?\n yes: [y], no: [n]')
         user_in = input('> ').lower()
-        if user_in == 'n':
+        if not yn(user_in):
             save(new_grid, district, algorithm)
 
 def do_alg(alg, grid):
@@ -108,11 +118,20 @@ def back():
     print("Go back?\nyes: [y], no: [n]")
     user_in = input('> ').lower()
     command(user_in)
-    if user_in == 'n':
+    if not yn(user_in):
         command('quit')
-    elif user_in != 'y':
+    elif yn(user_in) == None:
         print('Please choose one...')
         return back()
+
+def yn(u_in):
+    u_in = u_in.lower()
+    if u_in == 'y':
+        return True
+    elif u_in == 'n':
+        return False
+    else:
+        return None
 
 def command(user_in):
     user_in = user_in.lower()

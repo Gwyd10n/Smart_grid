@@ -26,7 +26,6 @@ def distance(grid):
             distances.append(distance)
         distance_list.append(distances)
 
-    print(distance_list)
     return distance_list
 
 
@@ -38,7 +37,7 @@ def lower_bound(list):
     for i in range(len(list)):
         low += (min(list[i]))
 
-    print("Lower bound: ", low)
+    return low
 
 
 def upper_bound(list):
@@ -50,7 +49,7 @@ def upper_bound(list):
     for i in range(len(list)):
         upp += (max(list[i]))
 
-    print("Upper bound: ", upp)
+    return upp
 
 
 def save_csv(grid, distr, alg):
