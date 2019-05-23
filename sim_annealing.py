@@ -7,16 +7,13 @@ from helpers.random_alg import random
 
 
 def sim_ann(grid, n_alg):
+    """
+    bereken aantal opties, stop optie in lijst
+    geef elke optie een prob
+    kies optie met random.choose
+    maak van grid de gegeven optie
+    """
 
-        """
-        bereken aantal opties, stop optie in lijst
-        geef elke optie een prob
-        kies optie met random.choose
-        maak van grid de gegeven optie
-        """
-
-
-def sim_ann(grid, n):
     # Get cable, house and battery dicts
     cables = grid.get_cables()
     batteries = grid.get_batteries()
@@ -32,7 +29,7 @@ def sim_ann(grid, n):
                 group.append(ckey)
         ckeys.append(group)
 
-    for i in range(n):
+    for i in range(n_alg):
         score = grid.tot_len()
         shuffle(ckeys)
         shuffle(ckeys[0])
