@@ -8,7 +8,7 @@ from helpers.greedy import greedy
 from helpers.greedy2 import greedy2
 from helpers.random_alg import random
 from helpers.hillclimber import hillclimber
-from helpers.sim_annealing import sim_ann
+from sim_annealing import sim_ann
 from helpers.kmeans import kmeans
 from helpers.helpers import save_csv
 from helpers.visualizer import plot

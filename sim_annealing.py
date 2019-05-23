@@ -1,6 +1,7 @@
 from copy import deepcopy
 from random import shuffle
 import numpy as np
+from helpers.load_data import create_grid
 
 
 def sim_ann(grid, n_alg):
@@ -57,3 +58,6 @@ def sim_ann(grid, n_alg):
         # print('iteration:', i, 'best:', score, 'current:', new_score)
     #
     # return grid
+
+if __name__ == '__main__':
+    sim_ann(create_grid(1, 50, 50, 1), 10)
