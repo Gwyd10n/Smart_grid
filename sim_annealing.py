@@ -53,7 +53,7 @@ def sim_ann(grid, n_alg):
 
         new_score = score - (orgA.get_length() + orgB.get_length()) + (newA.get_length() + newB.get_length())
 
-        if score > new_score:
+        if score > new_score and battA.get_cap() > houseB.max_out() and battB.get_cap() > houseA.max_out():
             grid.rem_cable(orgA.get_id())
             grid.rem_cable(orgB.get_id())
             grid.add_cable(newA)
