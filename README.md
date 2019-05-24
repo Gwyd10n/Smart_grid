@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ````
 **Structure**
 
-The code is divided into different folders, which we describe here one by one.
+The code is divided into different directories, which we describe here one by one.
 
 *Classes:*
 
