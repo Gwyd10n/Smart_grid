@@ -12,11 +12,15 @@ def greedy(grid):
         try:
             grid.clear_cables()
             greedy_grid = greedy_alg(grid)
-            return greedy_grid
+            batt_cost = 0
+            batteries = greedy_grid.get_batteries()
+            for key in batteries:
+                batt_cost += batteries[key].get_price()
+            if greedy_grid.get_cost() > batt_cost:
+                return greedy_grid
         except KeyError:
             pass
     exit("Greedy not solved")
-
 
 def greedy_alg(grid):
     batteries = grid.get_batteries()
