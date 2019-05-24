@@ -10,7 +10,7 @@ from helpers.random_alg import random
 
 def sim_ann(grid, n_alg):
     Ts = 100
-    Te = 0
+    Te = 1
 
     score = grid.get_cost()
     accept = 0
@@ -27,7 +27,7 @@ def sim_ann(grid, n_alg):
             # linear cooling scheme
             accept = max(0, min(1, np.exp(-(score_new - score) / T)))
 
-        if np.random.rand() < accept:
+        if np.random.rand() > accept:
             grid = prob_grid
 
         T = Ts - i * (Ts - Te) / n_alg
@@ -141,4 +141,4 @@ def swap_one(grid):
 
 
 if __name__ == '__main__':
-    print(sim_ann(random(create_grid(0, 50, 50, 1)), 1000).get_cost())
+    print(sim_ann(random(create_grid(0, 50, 50, 1)), 1000).tot_len())
