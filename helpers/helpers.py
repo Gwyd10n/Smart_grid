@@ -57,17 +57,16 @@ def upper_bound(list):
 
     return upp
 
-def move(grid):
+
+def move(grid, list):
     """
     Moves batteries according to specific new location on the grid
     """
     batteries = grid.get_batteries()
 
-    for bkey in batteries:
-        print(batteries[bkey].get_coord())
-        batteries[bkey].set_coord(x, y)
-
-
+    # For each battery, set the new coordinates
+    for indx, bkey in enumerate(batteries):
+        batteries[bkey].set_coord(list[indx][0], list[indx][1])
 
 def save_csv(grid, distr, alg):
     """

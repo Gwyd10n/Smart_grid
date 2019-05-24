@@ -5,7 +5,8 @@ import sys
 from helpers.clui import clui
 from helpers.load_data import create_grid
 from helpers.clui_test import clui_test
-from helpers.kmeans import kmeans_algorithm
+from helpers.kmeans import kmeans
+# from helpers.helpers import move
 
 
 if __name__ == "__main__":
@@ -16,4 +17,5 @@ if __name__ == "__main__":
     #     clui()
 
     grid = create_grid(0, 50, 50, 1)
-    kmeans_algorithm(grid)
+    kmeans(grid)
+    # move(grid)

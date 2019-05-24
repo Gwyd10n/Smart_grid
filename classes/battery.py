@@ -75,7 +75,7 @@ class Battery(object):
         """
         self._x = x
         self._y = y
-
+        
     def red_cap(self, batt_in):
         """
         Reduce capacity of battery
