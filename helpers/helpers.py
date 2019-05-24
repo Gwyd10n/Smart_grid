@@ -61,6 +61,9 @@ def upper_bound(list):
 def move(grid, list):
     """
     Moves batteries according to specific new location on the grid
+    :param grid: object
+    :param list: list
+    :return: none
     """
     batteries = grid.get_batteries()
 
@@ -74,7 +77,7 @@ def save_csv(grid, distr, alg):
     Saves grid to CSV file.
     :param grid: object
     :param distr: int
-    :param algorithm: string
+    :param alg: string
     :return: string
     """
     houses = grid.get_houses()

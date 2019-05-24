@@ -8,7 +8,7 @@ from helpers.greedy import greedy
 from helpers.greedy2 import greedy2
 from helpers.random_alg import random
 from helpers.hillclimber import hillclimber
-from sim_annealing import sim_ann
+from helpers.sim_annealing import sim_ann
 from helpers.kmeans import kmeans
 from helpers.helpers import save_csv
 from helpers.visualizer import plot
@@ -150,7 +150,7 @@ def do_alg(alg, grid):
                 user_in = input('Tstart:\n(must be integer greater than 0)\n> ')
                 command(user_in)
                 try:
-                    Ts = float(user_in)
+                    Ts = int(user_in)
                 except ValueError:
                     print('Invalid start temperature')
                     return do_alg(alg, grid)
@@ -163,7 +163,7 @@ def do_alg(alg, grid):
                 command(user_in)
 
                 try:
-                    Te = float(user_in)
+                    Te = int(user_in)
                 except ValueError:
                     print('Invalid end temperature')
                     return do_alg(alg, grid)
