@@ -49,14 +49,12 @@ def kmeans_algorithm(grid):
 
     list_centres = []
     # X and Y random centroids
-    Centroid_x = np.random.randint(0, max(list_x), size=k)
-    Centroid_y = np.random.randint(0, max(list_y), size=k)
+    Centroid_x = np.random.randint(min(list_x), max(list_x), size=k)
+    Centroid_y = np.random.randint(min(list_y), max(list_y), size=k)
 
     # Append X and Y to list
-    for i in range(len(Centroid_x)):
+    for i in range(k):
         list_centres.append([Centroid_x[i], Centroid_y[i]])
-    #
-    # print(list_centres)
 
     # Plot the centres
     plt.scatter(list_x, list_y, marker="^", c='black', s=7)
@@ -64,26 +62,45 @@ def kmeans_algorithm(grid):
     plt.title("Grid with houses")
     plt.xlabel("X-coordinates")
     plt.ylabel("Y-coordinates")
+    plt.show()
 
     # Store the value of centroids when it updates
-    C_old = np.zeros(5)
-    clusters = np.zeros(len(list))
+    list_centres = np.matrix(list_centres)
+    C_old = np.zeros(list_centres.shape)
 
     # Distance between new centroids and old centroids
-    error = dist(list_centres, C_old)
+    error = np.sum(dist(list_centres, C_old))
 
     # Run till error is zero
     while error > 0:
+        assigned_clusters = [[],[],[],[],[]]
         # Connect each value to its closest cluster
         for i in range(len(list)):
-            distances = dist(list[i], list_centres)
+            distances = np.sum(np.abs(list_centres - list[i]), axis=1)
             cluster = np.argmin(distances)
-            clusters[i] = cluster
+            assigned_clusters[cluster].append(list[i])
+
+        # print(assigned_clusters)
+        # break
 
         # Store the old values
         C_old = deepcopy(list_centres)
         # Find new centres y taking the average value
-        for i in range(k):
-            points = [X[j] for j in range(len(list_centres)) if clusters[j] == i]
-            [i] = np.mean(points, axis=0)
-        error = dist(list_centres, C_old)
+        for i in range(len(assigned_clusters)):
+            if len(assigned_clusters[i]):
+                list_centres[i] = np.mean(assigned_clusters[i], axis=0)
+            else:
+                list_centres[i] = C_old[i]
+
+        print(list_centres)
+        error = np.sum(dist(list_centres, C_old))
+        # break
+
+    # x = *list_centres.a
+
+    plt.scatter(list_x, list_y, marker="^", c='black', s=7)
+    plt.scatter(*zip(*list_centres.tolist()), marker="*", s=200, c="g")
+    plt.title("Grid with houses")
+    plt.xlabel("X-coordinates")
+    plt.ylabel("Y-coordinates")
+    plt.show()

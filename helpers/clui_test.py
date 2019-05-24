@@ -15,6 +15,7 @@ from helpers.clui import prompt_alg, choose_distr
 ALGORITHMS = {'random': random, 'greedy': greedy, 'greedy2': greedy2,
               'hillclimber': hillclimber, 'simulated_annealing': sim_ann}
 
+
 def clui_test():
     print('TEST INTERFACE')
     district = choose_distr()

@@ -15,5 +15,5 @@ if __name__ == "__main__":
     # else:
     #     clui()
 
-    grid = create_grid(0, 50, 50, district)
+    grid = create_grid(0, 50, 50, 1)
     kmeans_algorithm(grid)
