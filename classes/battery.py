@@ -1,5 +1,8 @@
-# District class for smart grid
+#!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
+"""
+Battery class for smart grid.
+"""
 
 
 class Battery(object):
@@ -75,7 +78,7 @@ class Battery(object):
         """
         self._x = x
         self._y = y
-        
+
     def red_cap(self, batt_in):
         """
         Reduce capacity of battery

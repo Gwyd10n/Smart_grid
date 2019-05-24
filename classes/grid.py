@@ -1,6 +1,8 @@
 #!/usr/bin/python
-# District class for smart grid
 # Gwydion Oostvogel, Sophie Schubert
+"""
+Grid class for smart grid.
+"""
 
 
 class Grid(object):
