@@ -34,9 +34,9 @@ def plot(path):
         for j, group in enumerate(points):
             for indx, point in enumerate(points[j]):
                 if indx == 0:
-                    plt.scatter(point[0], point[1], marker='*', s=100, color=colours[j])
+                    plt.scatter(point[0], point[1], marker='*', s=120, color=colours[j])
                 else:
-                    plt.scatter(point[0], point[1], marker='^', s=50, color=colours[j])
+                    plt.scatter(point[0], point[1], marker='^', s=25, color=colours[j])
 
         plt.grid(b=True, which='major', color='#666666', linestyle='-')
 
