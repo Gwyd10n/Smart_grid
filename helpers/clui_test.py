@@ -8,7 +8,7 @@ from helpers.greedy import greedy
 from helpers.greedy2 import greedy2
 from helpers.random_alg import random
 from helpers.hillclimber import hillclimber
-from sim_annealing import sim_ann
+from helpers.sim_annealing import sim_ann
 from helpers.clui import prompt_alg, choose_distr
 
 
