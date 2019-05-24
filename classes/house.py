@@ -1,5 +1,8 @@
-# District class for smart grid
+#!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
+"""
+House class for smart grid.
+"""
 
 
 class House(object):

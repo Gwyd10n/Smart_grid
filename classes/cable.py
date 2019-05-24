@@ -1,5 +1,8 @@
-# District class for smart grid
+#!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
+"""
+Cable class for smart grid.
+"""
 
 
 class Cable(object):
