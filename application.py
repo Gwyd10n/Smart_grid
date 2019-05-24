@@ -3,7 +3,6 @@
 
 import sys
 from helpers.clui import clui
-from helpers.load_data import create_grid
 from helpers.clui_test import clui_test
 from helpers.kmeans import kmeans
 # from helpers.helpers import move
