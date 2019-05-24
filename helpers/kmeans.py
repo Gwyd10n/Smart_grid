@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
+
 def kmeans(grid):
     coordinates = []
 
@@ -17,9 +18,10 @@ def kmeans(grid):
     centers = kmeans.cluster_centers_
     centers = centers.astype(int)
 
-def dist(x, y, ax=1):
 
+def dist(x, y):
     return abs(x[0] - y[0]) + abs(x[1] - y[1])
+
 
 def kmeans_algorithm(grid):
     """
@@ -68,10 +70,11 @@ def kmeans_algorithm(grid):
     clusters = np.zeros(len(list))
 
     # Distance between new centroids and old centroids
-    error = dist(list_centres, C_old, None)
+    error = dist(list_centres, C_old)
 
     # Run till error is zero
-    while error != 0:
+    while error > 0:
+        # Connect each value to its closest cluster
         for i in range(len(list)):
             distances = dist(list[i], list_centres)
             cluster = np.argmin(distances)
@@ -79,8 +82,8 @@ def kmeans_algorithm(grid):
 
         # Store the old values
         C_old = deepcopy(list_centres)
-        # Find new centres
+        # Find new centres y taking the average value
         for i in range(k):
             points = [X[j] for j in range(len(list_centres)) if clusters[j] == i]
             [i] = np.mean(points, axis=0)
-        error = dist(list_centres, C_old, None)
+        error = dist(list_centres, C_old)
