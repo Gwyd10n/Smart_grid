@@ -9,7 +9,7 @@ from helpers.random_alg import random
 
 def sim_ann(grid, n_alg):
     Ts = 10
-    Te = 0.1
+    Te = 1
     accept = 0
 
     for i in range(n_alg):
