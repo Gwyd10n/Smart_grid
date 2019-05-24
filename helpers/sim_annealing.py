@@ -23,12 +23,13 @@ def sim_ann(grid, n_alg, cooling='linear', Ts=10, Te=1, d=1):
     :return: object
     """
     accept = 0
-    i = 0
-    cooling_schemes = {'linear': Ts - i * (Ts - Te) / n_alg, 'exponential': Ts * math.pow(Te / Ts, i / n_alg),
-                       'sigmoidal': Te + (Ts - Te) / (1 + np.exp(0.3 * (i - n_alg / 2))),
-                       'geman&geman': Ts / (np.log(i + d))}
+
     T = Ts
     for i in range(n_alg):
+        cooling_schemes = {'linear': Ts - i * (Ts - Te) / n_alg, 'exponential': Ts * math.pow(Te / Ts, i / n_alg),
+                           'sigmoidal': Te + (Ts - Te) / (1 + np.exp(0.3 * (i - n_alg / 2))),
+                           'geman&geman': Ts / (np.log(i + d))}
+
         score = grid.tot_len()
         cables = grid.get_cables()
         batteries = grid.get_batteries()
