@@ -3,6 +3,12 @@ import os
 
 
 def get_man(coord_start, coord_end):
+    """
+    Calculate manhattan distance
+    :param coord_start: tuple
+    :param coord_end: tuple
+    :return:
+    """
 
     return abs(coord_start[0] - coord_end[0]) + abs(coord_start[1] - coord_end[1])
 
@@ -31,7 +37,7 @@ def distance(grid):
 
 def lower_bound(list):
     """
-    Calculates the lower boud
+    Calculates the lower price
     """
     low = 0
     for i in range(len(list)):
@@ -43,7 +49,7 @@ def lower_bound(list):
 def upper_bound(list):
     """
     Calculates the upper bound by looping through the houses and
-    calculates the maximum distance.
+    calculates the maximum price.
     """
     upp = 0
     for i in range(len(list)):
@@ -59,7 +65,7 @@ def move(grid):
 
     for bkey in batteries:
         print(batteries[bkey].get_coord())
-        batteries[bkey].set_coord(x, y, """doe hier je nieuwe x, y waarden, zie ook set_coord() methode in batteries""")
+        batteries[bkey].set_coord(x, y)
 
 
 

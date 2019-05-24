@@ -1,8 +1,7 @@
 from copy import deepcopy
 from random import shuffle
 import numpy as np
-from helpers.hillclimber import hillclimber
-
+import math
 from helpers.load_data import create_grid
 from helpers.random_alg import random
 
@@ -10,9 +9,7 @@ from helpers.random_alg import random
 
 def sim_ann(grid, n_alg):
     Ts = 100
-    Te = 1
-
-    score = grid.get_cost()
+    Te = 0.00001
     accept = 0
 
     for i in range(n_alg):
@@ -30,7 +27,15 @@ def sim_ann(grid, n_alg):
         if np.random.rand() > accept:
             grid = prob_grid
 
-        T = Ts - i * (Ts - Te) / n_alg
+        # T = Ts - i * (Ts - Te) / n_alg
+
+        T = Ts * math.pow(Te / Ts, i / n_alg)
+
+        # T = Te + (Ts - Te) / (1 + np.exp(0.3 * (i - n_alg / 2)))
+
+        # d = 2
+        # T = Ts / (np.log(i + d))
+        print(f'Iteration: {i}, Accepted score: {score}, Current score: {score_new}, Temp: {T}')
 
     return grid
 
