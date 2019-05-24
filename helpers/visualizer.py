@@ -15,7 +15,7 @@ def plot(path):
 
         points = []
         lines = []
-        colours = ['red', 'darkgreen', 'orange', 'purple', 'lightgreen']
+        colours = ["#0A1F56", "#785EF0", "#DC267F", "#FE6100", "#FFB000"]
 
         i = -1
         j = -1
@@ -34,9 +34,9 @@ def plot(path):
         for j, group in enumerate(points):
             for indx, point in enumerate(points[j]):
                 if indx == 0:
-                    plt.scatter(point[0], point[1], marker='s', color=colours[j])
+                    plt.scatter(point[0], point[1], marker='*', s=120, color=colours[j])
                 else:
-                    plt.scatter(point[0], point[1], marker='^', color=colours[j])
+                    plt.scatter(point[0], point[1], marker='^', s=25, color=colours[j])
 
         plt.grid(b=True, which='major', color='#666666', linestyle='-')
 
@@ -44,12 +44,7 @@ def plot(path):
         plt.minorticks_on()
 
         plt.grid(True, which='minor', color='#999999', linestyle='--')
-        plt.title(f"Wijk {district} met algoritme {algorithm}")
+        plt.title(f"Wijk {district} met algoritme {algorithm} with total length {total_len}")
 
-        # for line in lines:
-        #     for idx, point in enumerate(line):
-        #         if idx + 1 == len(line):
-        #             break
-        #         plt.plot((point[0], line[idx + 1][0]), (point[1], line[idx + 1][1]), color="r")
     csvfile.close()
     plt.show()

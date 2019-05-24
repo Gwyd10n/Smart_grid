@@ -68,6 +68,7 @@ def move(grid, list):
     for indx, bkey in enumerate(batteries):
         batteries[bkey].set_coord(list[indx][0], list[indx][1])
 
+
 def save_csv(grid, distr, alg):
     """
     Saves grid to CSV file.
