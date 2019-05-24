@@ -17,7 +17,9 @@ This code is written in [Python 3.7.3](https://www.python.org/downloads/). Requi
 ````
 pip install -r requirements.txt
 ````
-**Structure**
+### Structure
+
+---
 
 The code is divided into different directories, which we describe here one by one.
 
@@ -42,7 +44,13 @@ In addition, there is also a second folder, called results. If you choose to sav
 
 All algorithms are listed in this folder.
 
-In addition to the algorithms, there are also three other files, called helpers, clui and clui_test. Helpers is a file that contains functions that are helpful for the algorithms. Clui is the command line user interface, which contains all the instructions for the user. Clui_test is also a command line interface, which is only useful for analysis of the data.
+In addition to the algorithms, there are also four other files, called helpers, visualizer, clui and clui_test. Helpers is a file that contains functions that are helpful for the algorithms. Visualizer will plot a grid for each algorithm that you will run. Clui is the command line user interface, which contains all the instructions for the user. Clui_test is also a command line interface, which is only useful for analysis of the data.
+
+For a brief introduction to each algorithm, you can click [here](https://github.com/Gwyd10n/Smart_grid/blob/master/helpers/README.md).
+
+### Testing
+
+---
 
 To start the users interface, you have to run the following in your terminal:
 
@@ -50,10 +58,18 @@ To start the users interface, you have to run the following in your terminal:
 $ python application.py
 ```
 The terminal will show you the way to apply different algorithms and save the results.
-****
 
 
-**Authors**
+### Authors
+
+---
 
 - Gwydion Oostvogel
 - Sophie Schubert
+
+### Acknowledgments
+
+---
+
+- Stackoverflow
+- Wouter Vrielink, Arne Meijs and Daan van den Berg

@@ -1,6 +1,8 @@
 __Properties and methods__
 ---
+*Information about how the objects are connected*
 
+The houses and batteries are connected to each other through the cable object.
 ### Battery
 ---
 
