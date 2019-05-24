@@ -17,6 +17,7 @@ from helpers.helpers import upper_bound, lower_bound, distance
 ALGORITHMS = {'random': random, 'greedy': greedy, 'greedy2': greedy2,
               'hillclimber': hillclimber, 'simulated_annealing': sim_ann}
 
+
 def clui():
     print('Type HELP for list of commands')
     district = choose_distr()
@@ -28,6 +29,7 @@ def clui():
     print('Cost for this configuration:', new_grid.get_cost())
     path = save(new_grid, district, algorithm)
     prompt_plot(path)
+
 
 def do_kmean(grid):
     print('Place batteries using kmeans?\n yes: [y] no: [n]')
