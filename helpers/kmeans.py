@@ -63,21 +63,24 @@ def kmeans_algorithm(grid):
     plt.xlabel("X-coordinates")
     plt.ylabel("Y-coordinates")
 
+    # Store the value of centroids when it updates
+    C_old = np.zeros(5)
+    clusters = np.zeros(len(list))
 
-    # # Return a new array of given shape and type, filled with zeros
-    # C_old = np.zeros(5)
-    # clusters = np.zeros(len(list))
-    # error = dist(list_centres, C_old, None)
-    # while error != 0:
-    #     for i in range(len(list)):
-    #         distances = dist(list[i], list_centres)
-    #         cluster = np.argmin(distances)
-    #         clusters[i] = cluster
-    #
-    #     # Store the old values
-    #     C_old = deepcopy(list_centres)
-    #     # Find new centres
-    #     for i in range(k):
-    #         points = [X[j] for j in range(len(list_centres)) if clusters[j] == i]
-    #         [i] = np.mean(points, axis=0)
-    #     error = dist(list_centres, C_old, None)
+    # Distance between new centroids and old centroids
+    error = dist(list_centres, C_old, None)
+
+    # Run till error is zero
+    while error != 0:
+        for i in range(len(list)):
+            distances = dist(list[i], list_centres)
+            cluster = np.argmin(distances)
+            clusters[i] = cluster
+
+        # Store the old values
+        C_old = deepcopy(list_centres)
+        # Find new centres
+        for i in range(k):
+            points = [X[j] for j in range(len(list_centres)) if clusters[j] == i]
+            [i] = np.mean(points, axis=0)
+        error = dist(list_centres, C_old, None)

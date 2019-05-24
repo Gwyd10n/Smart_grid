@@ -9,9 +9,9 @@ def plot(path):
         result = csv.reader(csvfile)
 
         firstln = next(result)
-        # district = firstln[0]
-        # algorithm = firstln[1]
-        # total_len = firstln[2]
+        district = firstln[0]
+        algorithm = firstln[1]
+        total_len = firstln[2]
 
         points = []
         lines = []
@@ -44,11 +44,12 @@ def plot(path):
         plt.minorticks_on()
 
         plt.grid(True, which='minor', color='#999999', linestyle='--')
+        plt.title(f"Wijk {district} met algoritme {algorithm}")
 
-        for line in lines:
-            for idx, point in enumerate(line):
-                if idx + 1 == len(line):
-                    break
-                plt.plot((point[0], line[idx + 1][0]), (point[1], line[idx + 1][1]), color="r")
+        # for line in lines:
+        #     for idx, point in enumerate(line):
+        #         if idx + 1 == len(line):
+        #             break
+        #         plt.plot((point[0], line[idx + 1][0]), (point[1], line[idx + 1][1]), color="r")
     csvfile.close()
     plt.show()
