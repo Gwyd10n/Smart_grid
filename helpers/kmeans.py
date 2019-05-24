@@ -56,7 +56,7 @@ def kmeans_algorithm(grid):
     #
     # print(list_centres)
 
-    Plot the centres
+    # Plot the centres
     plt.scatter(list_x, list_y, marker="^", c='black', s=7)
     plt.scatter(Centroid_x, Centroid_y, marker="*", s=200, c="g")
     plt.title("Grid with houses")
