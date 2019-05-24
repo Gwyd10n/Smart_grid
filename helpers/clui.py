@@ -216,7 +216,7 @@ def do_alg(alg, grid):
                 user_in = input('Tend:\n(must be integer smaller than Tstart and greater than 0)\n> ')
                 command(user_in)
 
-                #
+                # Input validation
                 try:
                     Te = int(user_in)
                 except ValueError:
@@ -247,6 +247,7 @@ def do_alg(alg, grid):
                 else:
                     cooling = cooling_schemes[user_in]
 
+                # Ask for geman&geman parameter
                 if cooling == 'geman&geman':
                     print('Choose d value (value must be greater than 0\n default d = 1')
                     user_in = input('> ')
@@ -259,8 +260,10 @@ def do_alg(alg, grid):
                     if d < 0:
                         print('d must be greater than 0')
                         do_alg(alg, grid)
+                    # Return new grid
                     return ALGORITHMS[alg](new_grid, n, cooling, Ts, Te, d)
                 else:
+                    # Return new grid
                     return ALGORITHMS[alg](new_grid, n)
 
             elif yn(user_in) == '':
@@ -270,10 +273,15 @@ def do_alg(alg, grid):
 
     # No parameters required for chosen algorithm
     else:
+        # Return new grid
         return ALGORITHMS[alg](grid)
 
 
 def prompt_alg():
+    """
+    Ask user which algorithm should be used.
+    :return: string
+    """
     algorithms = {0: 'random', 1: 'greedy', 2: 'greedy2', 3: 'hillclimber', 4: 'simulated_annealing'}
     print("What algorithm should be used (type INFO to get description of algorithms)")
     print(''.join(['{0}{1}'.format(str(key) + ': ', value + '  ') for key, value in algorithms.items()]), end=' ')
@@ -292,6 +300,10 @@ def prompt_alg():
 
 
 def back():
+    """
+    Go back to 'main menu'
+    :return: none
+    """
     print("Go back?\nyes: [y], no: [n]")
     user_in = input('> ').lower()
     command(user_in)
@@ -302,6 +314,11 @@ def back():
 
 
 def yn(u_in):
+    """
+    Check if answer is yes, no or faulty answer
+    :param u_in: string
+    :return: bool
+    """
     u_in = u_in.lower()
     if u_in == 'y':
         return True
@@ -312,6 +329,11 @@ def yn(u_in):
 
 
 def command(user_in):
+    """
+    Check if user input is a command.
+    :param user_in: string
+    :return: none
+    """
     user_in = user_in.lower()
     if user_in == 'quit':
         sys.exit('Good-bye.')
@@ -338,6 +360,10 @@ def command(user_in):
 
 
 def choose_distr():
+    """
+    Ask user which district should be calculated.
+    :return:
+    """
     print("District to solve:\n[1] [2] [3]")
     user_in = input('> ')
     command(user_in)
