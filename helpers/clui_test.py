@@ -17,6 +17,10 @@ ALGORITHMS = {'random': random, 'greedy': greedy, 'greedy2': greedy2,
 
 
 def clui_test():
+    """
+    Main menu of clui
+    :return: none
+    """
     print('TEST INTERFACE')
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
@@ -27,6 +31,13 @@ def clui_test():
 
 
 def save(result, distr, alg):
+    """
+    Prompt save result.
+    :param result: list
+    :param distr: int
+    :param alg: string
+    :return: string
+    """
     path = os.path.dirname(__file__).replace("helpers", f"data\\results\\TEST_District_{distr}_{alg}_n_times.csv")
 
     with open(path, 'w', newline='') as csvfile:
@@ -35,7 +46,14 @@ def save(result, distr, alg):
     csvfile.close()
     return path
 
+
 def do_alg(alg, grid):
+    """
+    Specify algorithm parameters
+    :param alg: string
+    :param grid: object
+    :return: list
+    """
     print('Number of solutions')
     user_in = input('> ')
     try:

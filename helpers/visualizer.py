@@ -1,8 +1,19 @@
+#!/usr/bin/env python
+# Gwydion Oostvogel, Sophie Schubert
+"""
+Visualizer for smart grid
+"""
+
 import matplotlib.pyplot as plt
 import csv
 
 
 def plot(path):
+    """
+    Plots houses and batteries
+    :param path: string
+    :return: none
+    """
 
     with open(path, 'r') as csvfile:
         # Read file

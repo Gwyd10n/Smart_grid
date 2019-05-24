@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
+"""
+Greedy algorithm for smart grid (from battery to house)
+"""
+
 from classes.cable import Cable
 from helpers.helpers import get_man
 from random import shuffle
@@ -9,6 +13,8 @@ def greedy2(grid):
     """
     This is a greedy algorithm which connects the closest house to the battery
     by looping through the batteries.
+    :param grid: object
+    :return: object
     """
     # Shuffle the list with battery keys
     batteries = grid.get_batteries()
@@ -70,5 +76,4 @@ def greedy2(grid):
             cable.add_route(house.get_coord(), batteries[bkey].get_coord())
             grid.add_cable(cable)
 
-    # Return grid with added cables
     return grid

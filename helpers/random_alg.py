@@ -1,11 +1,20 @@
-# #!/usr/bin/env python
-# # Gwydion Oostvogel, Sophie Schubert
+#!/usr/bin/env python
+# Gwydion Oostvogel, Sophie Schubert
+"""
+Random 'algorithm' for smart grid
+"""
 
 from classes.cable import Cable
 from random import shuffle
 
 
 def random(grid):
+    """
+    Do random algorithm, if random does not find a solution (not all houses are connected to a battery),
+    do random again.
+    :param grid: object
+    :return: object
+    """
     max_iterations = 1000
     for i in range(max_iterations):
         try:
@@ -18,6 +27,11 @@ def random(grid):
 
 
 def random_grid(grid):
+    """
+    Connect each house to a random battery
+    :param grid:
+    :return:
+    """
 
     batteries = grid.get_batteries()
     bkeys = list(batteries.keys())

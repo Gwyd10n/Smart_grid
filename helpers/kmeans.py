@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# Gwydion Oostvogel, Sophie Schubert
+"""
+Kmeans algorithm to determine coordinates of the batteries
+"""
+
 from copy import deepcopy
 import numpy as np
 from helpers.helpers import get_man, move
@@ -7,6 +13,8 @@ def kmeans(grid):
     """
     K-Mean algorithm that takes coordinates and constant k and returns
     k centers.
+    :param grid: object
+    :return: list
     """
     houses = grid.get_houses()
 

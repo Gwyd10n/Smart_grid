@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# Gwydion Oostvogel, Sophie Schubert
+"""
+Helper functions for smart grid.
+"""
+
 import csv
 import os
 
@@ -7,7 +13,7 @@ def get_man(coord_start, coord_end):
     Calculate manhattan distance
     :param coord_start: tuple
     :param coord_end: tuple
-    :return:
+    :return: int
     """
 
     return abs(coord_start[0] - coord_end[0]) + abs(coord_start[1] - coord_end[1])
@@ -16,11 +22,12 @@ def get_man(coord_start, coord_end):
 def distance(grid):
     """
     A list with all the distances from houses to batteries
+    :param grid: grid
+    :return: list
     """
     houses = grid.get_houses()
     batteries = grid.get_batteries()
 
-    distance = 0
     distance_list = []
 
     # Iterate over houses
@@ -28,8 +35,8 @@ def distance(grid):
         distances = []
         for bkey in batteries:
             # Get manhatten distances
-            distance = get_man(houses[hkey].get_coord(), batteries[bkey].get_coord())
-            distances.append(distance)
+            dist = get_man(houses[hkey].get_coord(), batteries[bkey].get_coord())
+            distances.append(dist)
         distance_list.append(distances)
 
     return distance_list
@@ -37,7 +44,9 @@ def distance(grid):
 
 def lower_bound(list):
     """
-    Calculates the lower price
+    Calculates the lower bound in length units
+    :param list: list
+    :return: int
     """
     low = 0
     for i in range(len(list)):
@@ -49,7 +58,9 @@ def lower_bound(list):
 def upper_bound(list):
     """
     Calculates the upper bound by looping through the houses and
-    calculates the maximum price.
+    calculates the maximum length of cables in length units.
+    :param list: list
+    :return: int
     """
     upp = 0
     for i in range(len(list)):

@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-
 # Gwydion Oostvogel, Jelle Westerbos, Sophie Schubert
-# helper functions for loading data.
+"""
+Functions for loading data.
+"""
 
 import os
 import csv
 import re
-
 from classes.grid import Grid
 from classes.battery import Battery
 from classes.house import House

@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
+"""
+Start application
+"""
 
 import sys
 from helpers.clui import clui
