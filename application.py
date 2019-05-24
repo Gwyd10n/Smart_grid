@@ -11,11 +11,7 @@ from helpers.kmeans import kmeans
 
 if __name__ == "__main__":
 
-    # if len(sys.argv) == 2 and sys.argv[1] == 'test':
-    #     clui_test()
-    # else:
-    #     clui()
-
-    grid = create_grid(0, 50, 50, 1)
-    kmeans(grid)
-    # move(grid)
+    if len(sys.argv) == 2 and sys.argv[1] == 'test':
+        clui_test()
+    else:
+        clui()

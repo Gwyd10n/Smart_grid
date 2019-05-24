@@ -21,7 +21,6 @@ def greedy2(grid):
 
     # For each battery:
     for idx, bkey in enumerate(bkeys):
-        print(idx)
         # Houses to connect to this battery
         conn_houses = []
         battery = batteries[bkey]

@@ -32,7 +32,7 @@ def clui():
 
 
 def do_kmean(grid):
-    print('Place batteries using kmeans?\n yes: [y] no: [n]')
+    print('Place batteries using kmeans? Otherwise you will use the supplied coordinates\n yes: [y] no: [n]')
     user_in = input('> ')
     command(user_in)
     if yn(user_in):
@@ -110,7 +110,7 @@ def do_alg(alg, grid):
         user_in = input('> ')
         command(user_in)
         try:
-            n = int(n)
+            n = int(user_in)
         except ValueError:
             print("Invalid number, negatives and decimals are not allowed")
             return do_alg(alg, grid)
