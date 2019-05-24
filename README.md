@@ -19,25 +19,39 @@ pip install -r requirements.txt
 ````
 **Structure**
 
-The code is divided into different folders, which we describe here one by one.
+The code is divided into different directories, which we describe here one by one.
 
-*Classes*
+*Classes:*
 
-This folder contains the following objects.
+
+This folder contains the following objects:
 - Battery
 - Cable
 - Grid
 - House
 
-For more information about these objects, you can have a look into the [properties and methods]().
+For more information about these objects, you can have a look into the [properties and methods](https://github.com/Gwyd10n/Smart_grid/blob/master/classes/README.md).
+
+*Data:*
+
+This folder contains all data sets that have been used for this smart grid.
+
+In addition, there is also a second folder, called results. If you choose to save the results of a chosen algorithm, these can be found here.
+
+*Helpers:*
+
+All algorithms are listed in this folder.
+
+In addition to the algorithms, there are also three other files, called helpers, clui and clui_test. Helpers is a file that contains functions that are helpful for the algorithms. Clui is the command line user interface, which contains all the instructions for the user. Clui_test is also a command line interface, which is only useful for analysis of the data.
 
 To start the users interface, you have to run the following in your terminal:
 
 ```
 $ python application.py
 ```
-
+The terminal will show you the way to apply different algorithms and save the results.
 ****
+
 
 **Authors**
 
