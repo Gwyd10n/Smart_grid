@@ -70,5 +70,5 @@ def do_alg(alg, grid):
         results = []
         for i in range(n_sol):
             grid = ALGORITHMS[alg](grid)
-            results.append([i, grid.get_cost()])
+            results.append([i, grid.tot_len()])
         return results
