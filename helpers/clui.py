@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # Gwydion Oostvogel, Sophie Schubert
+"""
+Command line user interface for smart grid.
+"""
 
 import os
 import sys
@@ -19,6 +22,10 @@ ALGORITHMS = {'random': random, 'greedy': greedy, 'greedy2': greedy2,
 
 
 def clui():
+    """
+    Ask for user input.
+    :return: none
+    """
     print('Type HELP for list of commands')
     district = choose_distr()
     grid = create_grid(0, 50, 50, district)
@@ -29,9 +36,15 @@ def clui():
     print('Cost for this configuration:', new_grid.get_cost())
     path = save(new_grid, district, algorithm)
     prompt_plot(path)
+    another()
 
 
 def do_kmean(grid):
+    """
+    Ask if user wants place batteries using kmeans.
+    :param grid: object
+    :return:
+    """
     print('Place batteries using kmeans? Otherwise you will use the supplied coordinates\n yes: [y] no: [n]')
     user_in = input('> ')
     command(user_in)
@@ -43,6 +56,11 @@ def do_kmean(grid):
 
 
 def show_bounds(grid):
+    """
+    Aks if user wants to calculate upper and lower bound.
+    :param grid: object
+    :return: none
+    """
     print('Calculate upper and lower bound?\n yes: [y] no: [n]')
     user_in = input('> ')
     command(user_in)
@@ -54,6 +72,10 @@ def show_bounds(grid):
 
 
 def another():
+    """
+    Ask if user wants to calculate another grid.
+    :return: none
+    """
     print('Another?\n yes: [y], no: [n]')
     user_in = input('> ').lower()
     command(user_in)
@@ -66,6 +88,11 @@ def another():
 
 
 def prompt_plot(path):
+    """
+    Ask if user wants to plot the solution.
+    :param path: string
+    :return: none
+    """
     print('Plot solution?\n yes: [y], no: [n]')
     user_in = input('> ').lower()
     command(user_in)
@@ -76,6 +103,13 @@ def prompt_plot(path):
 
 
 def save(new_grid, district, algorithm):
+    """
+    Ask if user wants to save solution.
+    :param new_grid: object
+    :param district: int
+    :param algorithm: string
+    :return: string
+    """
     print('Would you like to save this configuration?\n(NOTE: can only plot if configuration is saved)\n yes: [y], no: [n]')
     user_in = input('> ').lower()
     command(user_in)
@@ -103,52 +137,72 @@ def save(new_grid, district, algorithm):
 
 
 def do_alg(alg, grid):
+    """
+    Calculate solution with specified algorithm.
+    :param alg: string
+    :param grid: object
+    :return: object
+    """
+    # Set posiible algorithms
     algorithms = {0: 'random', 1: 'greedy', 2: 'greedy2'}
     cooling_schemes = {0: 'linear', 1: 'exponential', 2: 'sigmoidal', 3: 'geman&geman'}
+
+    # Ask for hillclimber parameters
     if alg == 'hillclimber':
         print('How many iterations')
         user_in = input('> ')
         command(user_in)
+        # Check if input is valid
         try:
             n = int(user_in)
         except ValueError:
             print("Invalid number, negatives and decimals are not allowed")
             return do_alg(alg, grid)
+
         print('Algorithm to create initial solution\nrandom: [0], greedy: [1], greedy2: [2]')
         user_in = input('> ')
+        # Check if input is valid
         try:
             user_in = int(user_in)
         except ValueError:
             print('Invalid number, choose one from list below')
             return do_alg(alg, grid)
-        if user_in >= 0 and user_in <= 2:
+        if 0 <= user_in <= 2:
             new_grid = ALGORITHMS[algorithms[user_in]](grid)
             return ALGORITHMS[alg](new_grid, n)
+
+    # Ask for parameters for simmulated annealing
     elif alg == 'simulated_annealing':
         print('How many iterations')
         n = input('> ')
+        # Check if input is valid
         try:
             n = int(n)
         except ValueError:
             print("Invalid number, negatives and decimals are not allowed")
             return do_alg(alg, grid)
+
         print('Algorithm to create initial solution\nrandom: [0], greedy: [1], greedy2: [2]')
         user_in = input('> ')
         command(user_in)
+        # Check if input is valid
         try:
             user_in = int(user_in)
         except ValueError:
             print('Invalid number, choose one from list')
             return do_alg(alg, grid)
-        if user_in >= 0 and user_in <= 2:
+        # Input validation
+        if 0 <= user_in <= 2:
             new_grid = ALGORITHMS[algorithms[user_in]](grid)
             print('Set annealing parameters?\nyes: [y], no: [n]\n(default is linear cooling scheme, with Tstart = 10 and Tend = 1)')
             user_in = (input('> '))
             command(user_in)
+            # User wants to set parameters for algorithm
             if yn(user_in):
                 # Get start temperature
                 user_in = input('Tstart:\n(must be integer greater than 0)\n> ')
                 command(user_in)
+                # Input validation
                 try:
                     Ts = int(user_in)
                 except ValueError:
@@ -162,6 +216,7 @@ def do_alg(alg, grid):
                 user_in = input('Tend:\n(must be integer smaller than Tstart and greater than 0)\n> ')
                 command(user_in)
 
+                #
                 try:
                     Te = int(user_in)
                 except ValueError:
@@ -186,7 +241,7 @@ def do_alg(alg, grid):
                     print('Invalid number, choose one from list')
                     return do_alg(alg, grid)
 
-                if not user_in in cooling_schemes:
+                if user_in not in cooling_schemes:
                     print('Invalid algorithm, choose one from list')
                     return do_alg(alg, grid)
                 else:
@@ -213,6 +268,7 @@ def do_alg(alg, grid):
             elif not yn(user_in):
                 return ALGORITHMS[alg](new_grid, n)
 
+    # No parameters required for chosen algorithm
     else:
         return ALGORITHMS[alg](grid)
 
@@ -228,7 +284,7 @@ def prompt_alg():
     except ValueError:
         print('Invalid number, choose one from list below')
         return prompt_alg()
-    if not user_in in algorithms:
+    if user_in not in algorithms:
         print('Invalid algorithm, choose one from list below')
         return prompt_alg()
     else:
