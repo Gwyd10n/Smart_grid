@@ -2,15 +2,13 @@ from copy import deepcopy
 from random import shuffle
 import numpy as np
 import math
-from helpers.load_data import create_grid
-from helpers.random_alg import random
 
 
-
-def sim_ann(grid, n_alg):
-    Ts = 10
-    Te = 1
+def sim_ann(grid, n_alg, cooling='linear', Ts=10, Te=1, d=1):
     accept = 0
+    i = 0
+    cooling_schemes = {'linear': Ts - i * (Ts - Te) / n_alg, 'exponential': Ts * math.pow(Te / Ts, i / n_alg),
+                       'sigmoidal': Te + (Ts - Te) / (1 + np.exp(0.3 * (i - n_alg / 2))), 'geman&geman': Ts / (np.log(i + d))}
 
     for i in range(n_alg):
         score = grid.tot_len()
@@ -62,20 +60,11 @@ def sim_ann(grid, n_alg):
         else:
             accept = 0
 
-        ding = np.random.rand()
-        T = Ts * math.pow(Te / Ts, i / n_alg)
+        T = cooling_schemes[cooling]
         print(f'Iteration: {i}, Accepted score: {score}, Current score: {score_new}, Temp: {T}')
-        if ding < accept:
+        if np.random.rand() < accept:
             grid.rem_cable(orgA.get_id())
             grid.rem_cable(orgB.get_id())
             grid.add_cable(newA)
             grid.add_cable(newB)
-
-        # T = Ts - i * (Ts - Te) / n_alg
-
-        # T = Te + (Ts - Te) / (1 + np.exp(0.3 * (i - n_alg / 2)))
-
-        # d = 2
-        # T = Ts / (np.log(i + d))
-
     return grid
