@@ -24,12 +24,11 @@ def sim_ann(grid, n_alg, cooling='linear', Ts=10, Te=1, d=1):
     """
     accept = 0
 
+    T = Ts
     for i in range(n_alg):
         cooling_schemes = {'linear': Ts - i * (Ts - Te) / n_alg, 'exponential': Ts * math.pow(Te / Ts, i / n_alg),
                            'sigmoidal': Te + (Ts - Te) / (1 + np.exp(0.3 * (i - n_alg / 2))),
                            'geman&geman': Ts / (np.log(i + d))}
-        # Set temperature
-        T = cooling_schemes[cooling]
 
         score = grid.tot_len()
         cables = grid.get_cables()
@@ -83,6 +82,8 @@ def sim_ann(grid, n_alg, cooling='linear', Ts=10, Te=1, d=1):
             accept = 0
 
         print(f'Iteration: {i}, Accepted score: {score}, Current score: {score_new}, Temp: {T}')
+        # Reduce temperature
+        T = cooling_schemes[cooling]
 
         # If accepted, keep changes
         if np.random.rand() < accept:
