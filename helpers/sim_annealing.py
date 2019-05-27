@@ -71,7 +71,7 @@ def sim_ann(grid, n_alg, cooling='linear', Ts=10, Te=1, d=1):
         score_new = score - (orgA.get_length() + orgB.get_length()) + (newA.get_length() + newB.get_length())
 
         # Calculate acceptance
-        if battA.get_cap() > houseB.get_max() and battB.get_cap() > houseA.get_max():
+        if battA.get_cap() + houseA.get_max() >= houseB.get_max() and battB.get_cap() + houseB.get_max() >= houseA.get_max():
 
             if score >= score_new:
                 accept = 1
