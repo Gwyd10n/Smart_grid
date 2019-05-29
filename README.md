@@ -73,3 +73,9 @@ The terminal will show you the way to apply different algorithms and save the re
 
 - Stackoverflow
 - Wouter Vrielink, Arne Meijs and Daan van den Berg
+
+## Link to our presentation 
+
+---
+
+- [Presentation](https://docs.google.com/presentation/d/1noBIOGgSZFWDhZvnRGsknOYGbtNCY_rgCb2i4COCsa0/edit?usp=sharing)
